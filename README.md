@@ -1,24 +1,7 @@
-# README
+# SISTEMA DE FRETE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Esta aplicação é responsável por gerenciar a frota de entrega para um e-commerce com alcance nacional. Diferentes tipos de transporte são cadastrados definindo, os quais apresentam custos distintos. A plataforma cadastra novos pedidos de frete (ordens de serviço) e faz os cálculos de frete de acordo com os tipos de transporte que atendem ao perfil do pedido. Além disso, a aplicação controla as ordens de serviço em andamento, encerra ordens de serviço e apresenta o status da frota de veículos da empresa.
 
-Things you may want to cover:
+Fluxograma com escopo da aplicação está aqui:
+https://excalidraw.com/#json=DdOGmgVFqHn75iQKISZNn,2Uwvx369cEgJvcfCe__9Cw
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
