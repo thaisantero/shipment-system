@@ -5,3 +5,5 @@ Esta aplicação é responsável por gerenciar a frota de entrega para um e-comm
 Fluxograma com escopo da aplicação está aqui:
 https://excalidraw.com/#json=DdOGmgVFqHn75iQKISZNn,2Uwvx369cEgJvcfCe__9Cw
 
+Link do Trello com organização das tarefas está aqui:
+https://trello.com/b/XXovEVX4/sistema-de-frete-treinadev
