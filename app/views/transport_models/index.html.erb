@@ -1,0 +1,18 @@
+  <h2> <%= TransportModel.model_name.human %> </h2>
+
+  <% @transport_models.each do | tm | %>
+  <h2> <%= tm.name %> </h2>
+    <div>
+      <dl>
+        <dt> Intervalo de Distância aceitável:</dt>
+        <dd> <%= tm.minimum_distance %> - <%= tm.maximum_distance %>km</dd>
+        <dt> <%= TransportModel.human_attribute_name(:fixed_rate)%>:</dt>
+        <dd><%= number_to_currency(tm.fixed_rate, unit: "R$", separator: ",") %></dd>
+      </dl>
+    </div>
+  <% end %>
+
+  <% if @transport_models.empty?%>
+    <p> Nao existem modelos de transporte cadastrados </p>
+  <% end %>
+</section>
