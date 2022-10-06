@@ -1,4 +1,6 @@
 pt-BR:
+  active: 'Ativo'
+  disabled: 'Desativado'
   activerecord:
     models:
       transport_model: 
@@ -12,3 +14,4 @@ pt-BR:
         minimum_weight: 'Peso Mínimo'
         maximum_weight: 'Peso Máximo'
         fixed_rate: 'Taxa Fixa'
+        status: 'Situação'
