@@ -1,18 +1,30 @@
-  <h2> <%= TransportModel.model_name.human %> </h2>
+<h1> <%=TransportModel.model_name.human%></h1>
 
-  <% @transport_models.each do | tm | %>
-  <h2> <%= tm.name %> </h2>
-    <div>
-      <dl>
-        <dt> Intervalo de Distância aceitável:</dt>
-        <dd> <%= tm.minimum_distance %> - <%= tm.maximum_distance %>km</dd>
-        <dt> <%= TransportModel.human_attribute_name(:fixed_rate)%>:</dt>
-        <dd><%= number_to_currency(tm.fixed_rate, unit: "R$", separator: ",") %></dd>
-      </dl>
-    </div>
-  <% end %>
 
-  <% if @transport_models.empty?%>
-    <p> Nao existem modelos de transporte cadastrados </p>
-  <% end %>
-</section>
+
+
+
+<% if @transport_models.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= TransportModel.model_name.human %></th>
+        <th>Intervalo de Distância aceitável</th>
+        <th>Intervalo de Peso suportável</th>
+        <th><%= TransportModel.human_attribute_name(:fixed_rate)%></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @transport_models.each do | tm | %>
+      <tr>
+        <td><%= tm.name %> </td>
+        <td> <%= tm.minimum_distance %> - <%= tm.maximum_distance %>km</td>
+                <td> <%= tm.minimum_weight %> - <%= tm.maximum_weight %>kg</td>
+        <td> <%= number_to_currency(tm.fixed_rate, unit: "R$", separator: ",") %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Nao existem modelos de transporte cadastrados.</p>
+<% end %>
