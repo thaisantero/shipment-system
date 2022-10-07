@@ -14,4 +14,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :email, email: true
   validates :name, presence: true
+  enum role: { regular_user: 5, admin: 10 }
 end

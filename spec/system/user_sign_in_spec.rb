@@ -16,7 +16,8 @@ describe 'Usuário se autentica' do
     expect(page).to have_button 'Sair'
     expect(page).not_to have_link 'Entrar'
     within('nav') do
-      expect(page).to have_content 'User | user@sistemadefrete.com.br'
+      expect(page).to have_content 'User | user@sistemadefrete.com.br | Usuário Regular'
+      expect(page).not_to have_content 'User | user@sistemadefrete.com.br | Administrador(a)'
     end
   end
 

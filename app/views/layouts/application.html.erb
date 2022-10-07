@@ -15,7 +15,7 @@
       <nav>
         <%= link_to 'Modelos de Transporte', transport_models_path %> |
         <% if user_signed_in? %>
-          <%= current_user.name%> | <%= current_user.email %> |
+          <%= current_user.name%> | <%= current_user.email %> | <%= I18n.t(current_user.role) %> 
           <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
         <% else %>
           <%= link_to 'Entrar', new_user_session_path %>
