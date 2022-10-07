@@ -15,3 +15,5 @@ pt-BR:
         maximum_weight: 'Peso Máximo'
         fixed_rate: 'Taxa Fixa'
         status: 'Situação'
+      user:
+        name: 'Nome'
