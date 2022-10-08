@@ -28,10 +28,14 @@
         <% else %>
           <td> <%= I18n.t(tm.status) %> </td>
         <% end %>
+        <% if current_user.admin? %>
+          <td> <%= link_to 'Editar', edit_transport_model_path(tm.id)%> </td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>
   </table>
+
 <% else %>
   <p>Nao existem modelos de transporte cadastrados.</p>
 <% end %>

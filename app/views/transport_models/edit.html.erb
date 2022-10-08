@@ -1,0 +1,13 @@
+<h2> Editar Modelo de Transporte</h2>
+
+<% if @transport_model.errors.any? %>
+  <p> Verifique os erros abaixo: </p>
+
+  <ul>
+    <% @transport_model.errors.full_messages.each do | msg |%>
+      <li> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render 'form'%>

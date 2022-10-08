@@ -1,5 +1,5 @@
 class TransportModelsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new, :create, :change_status]
+  before_action :authenticate_user!, only: [:index, :new, :create, :change_status, :edit, :update]
   def index
     @transport_models = TransportModel.all
   end
@@ -17,6 +17,22 @@ class TransportModelsController < ApplicationController
     else
       flash.now[:notice] = 'Modelo de Transporte não cadastrado.'
       render 'new'
+    end
+  end
+
+  def edit
+    @transport_model = TransportModel.find(params[:id])
+  end
+
+  def update
+    @transport_model = TransportModel.find(params[:id])
+
+    if @transport_model.update(transport_model_params)
+      flash[:notice] = 'Modelo de Transporte atualizado com sucesso.'
+      redirect_to transport_models_path
+    else
+      flash.now[:notice] = 'Não foi possível atualizar o modelo de transporte.'
+      render 'edit'
     end
   end
 
