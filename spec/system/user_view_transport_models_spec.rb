@@ -1,15 +1,23 @@
 require 'rails_helper'
 
 describe 'Usuário vê modelos de transporte cadastrados' do
+  it 'se estiver autenticado' do
+    visit root_path
+    click_on 'Modelos de Transporte'
+
+    expect(current_path).to eq new_user_session_path 
+  end
+
   it 'a partir do menu' do
     # Arrange
-    # cadastrar dois galpoes: Rio e MAceio
+    user = User.create!(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password')
     TransportModel.create(name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
                           maximum_weight: 10_000, fixed_rate: 10, status: 'active')
     TransportModel.create(name: 'Bike', minimum_distance: 1, maximum_distance: 10, minimum_weight: 1,
                           maximum_weight: 10, fixed_rate: 5, status: 'disabled')
 
     # Act
+    login_as(user)
     visit root_path
     click_on 'Modelos de Transporte'
 

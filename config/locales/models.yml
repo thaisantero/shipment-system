@@ -2,7 +2,7 @@ pt-BR:
   active: 'Ativo'
   disabled: 'Desativado'
   regular_user: 'Usuário Regular'
-  admin: 'Administrador'
+  admin: 'Administrador(a)'
   activerecord:
     models:
       transport_model: 

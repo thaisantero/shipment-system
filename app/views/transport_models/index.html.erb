@@ -1,4 +1,9 @@
-<h1> <%=TransportModel.model_name.human%></h1>
+<h2> <%=TransportModel.model_name.human%></h2>
+<nav>
+  <% if current_user.admin? %>
+    <%= link_to 'Cadastrar novo modelo de transporte', new_transport_model_path %>
+  <% end %>
+</nav>
 
 <% if @transport_models.any? %>
   <table>
