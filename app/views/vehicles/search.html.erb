@@ -1,5 +1,6 @@
 <h2> <%=Vehicle.model_name.human(:count => 2)%></h2>
 
+<p><%= @vehicles.count %> <%= Vehicle.model_name.human(count:@vehicles.count).downcase %> <%= t(:found, count: @vehicles.count) %></p>
 <% if @vehicles.any? %>
   <table>
     <thead>
@@ -14,8 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @vehicles.each do | vehicles_in_same_status | %>
-          <% vehicles_in_same_status.each do | v | %>
+      <% @vehicles.each do | v | %>
       <tr>
         <td><%= v.identification_plate %> </td>
         <td><%= v.vehicle_brand %> </td>
@@ -25,10 +25,9 @@
         <td><%= v.transport_model.name %> </td>
         <td><%= I18n.t(v.status) %> </td>
       </tr>
-        <% end %>
       <% end %>
     </tbody>
   </table>
 <% else %>
-  <p>Nao existem veículos cadastrados.</p>
+  <p>Sem resultado para a busca.</p>
 <% end %>

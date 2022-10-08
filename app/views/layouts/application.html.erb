@@ -18,6 +18,13 @@
         <% if user_signed_in? %>
           <%= current_user.name%> | <%= current_user.email %> | <%= I18n.t(current_user.role) %> 
           <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
+          <% if current_page?(vehicles_path) %>
+            <%= form_with(url: search_vehicles_path, method: :get) do | f |%>
+            <%= f.label :query,  'Buscar Veículo' %>
+            <%= f.text_field :query %>
+            <%= f.submit 'Buscar' %>
+            <% end %> 
+          <% end %>
         <% else %>
           <%= link_to 'Entrar', new_user_session_path %>
         <% end %>
