@@ -23,7 +23,11 @@
         <td> <%= tm.minimum_distance %> - <%= tm.maximum_distance %>km</td>
         <td> <%= tm.minimum_weight %> - <%= tm.maximum_weight %>kg</td>
         <td> <%= number_to_currency(tm.fixed_rate, unit: "R$", separator: ",") %></td>
-        <td> <%= I18n.t(tm.status) %> </td>
+        <% if current_user.admin? %>
+          <td> <%= button_to I18n.t(tm.status), change_status_transport_model_path(tm.id), { method: 'patch' } %> </td>
+        <% else %>
+          <td> <%= I18n.t(tm.status) %> </td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>

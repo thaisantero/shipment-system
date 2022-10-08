@@ -37,4 +37,19 @@ describe 'Usuário se cadastra' do
     expect(page).to have_content 'Nome não pode ficar em branco'
     expect(page).to have_link 'Entrar'
   end
+
+  it 'com e-mail inválido' do
+    visit root_path
+    click_on 'Entrar'
+    click_on 'Criar uma conta'
+    within('form') do
+      fill_in 'Nome', with: 'Maria'
+      fill_in 'E-mail', with: 'maria@email.com.br'
+      fill_in 'Senha', with: 'maria123'
+      click_on 'Criar conta'
+    end
+
+    expect(page).to have_content 'E-mail inválido'
+    expect(page).to have_link 'Entrar'
+  end
 end

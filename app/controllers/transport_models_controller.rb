@@ -1,5 +1,5 @@
 class TransportModelsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new, :create]
+  before_action :authenticate_user!, only: [:index, :new, :create, :change_status]
   def index
     @transport_models = TransportModel.all
   end
@@ -17,6 +17,17 @@ class TransportModelsController < ApplicationController
     else
       flash.now[:notice] = 'Modelo de Transporte não cadastrado.'
       render 'new'
+    end
+  end
+
+  def change_status
+    transport_model = TransportModel.find(params[:id])
+    if transport_model.active?
+      transport_model.disabled!
+      redirect_to transport_models_path, notice: "O Modelo #{transport_model.name} foi desativado."
+    else
+      transport_model.active!
+      redirect_to transport_models_path, notice: "O Modelo #{transport_model.name} foi ativado."
     end
   end
 

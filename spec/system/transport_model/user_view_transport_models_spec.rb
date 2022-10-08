@@ -5,7 +5,7 @@ describe 'Usuário vê modelos de transporte cadastrados' do
     visit root_path
     click_on 'Modelos de Transporte'
 
-    expect(current_path).to eq new_user_session_path 
+    expect(current_path).to eq new_user_session_path
   end
 
   it 'a partir do menu' do
