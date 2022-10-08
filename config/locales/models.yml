@@ -3,11 +3,16 @@ pt-BR:
   disabled: 'Desativado'
   regular_user: 'Usuário Regular'
   admin: 'Administrador(a)'
+  waiting: 'Em Espera'
+  maintenance: 'Em Manutenção'
   activerecord:
     models:
       transport_model: 
         one: 'Modelo de Transporte'
         other: 'Modelos de Transporte' 
+      vehicle: 
+        one: 'Veículo'
+        other: 'Veículos'
     attributes:
       transport_model:
         name: 'Nome'
@@ -19,3 +24,10 @@ pt-BR:
         status: 'Situação'
       user:
         name: 'Nome'
+      vehicle:
+        identification_plate: 'Placa de Identificação'
+        vehicle_brand: 'Marca'
+        vehicle_type: 'Modelo'
+        fabrication_year: 'Ano de Fabricação'
+        max_load_capacity: 'Capacidade Máxima de Carga'
+        status: 'Situação'
