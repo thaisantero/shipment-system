@@ -1,5 +1,5 @@
 class TransportModelsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new, :create, :change_status, :edit, :update]
+  before_action :authenticate_user!
   def index
     @transport_models = TransportModel.all
   end

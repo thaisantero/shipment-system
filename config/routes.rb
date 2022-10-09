@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :transport_models, only: [:index, :new, :create, :show, :edit, :update] do
     patch 'change_status', on: :member
   end
-  resources :vehicles, only: [:index] do
+  resources :vehicles, only: [:index, :new, :create] do
     get 'search', on: :collection
   end
 end

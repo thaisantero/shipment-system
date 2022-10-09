@@ -31,3 +31,5 @@ pt-BR:
         fabrication_year: 'Ano de Fabricação'
         max_load_capacity: 'Capacidade Máxima de Carga'
         status: 'Situação'
+        transport_model_id: 'Modelo de Transporte'
+        transport_model: 'Modelo de Transporte'

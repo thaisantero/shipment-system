@@ -16,4 +16,25 @@ class VehiclesController < ApplicationController
       "%#{@query}%", "%#{@query}%", "%#{@query}%", "%#{@query}%", "%#{@query}%"
     )
   end
+
+  def new
+    @vehicle = Vehicle.new
+    @transport_models = TransportModel.all
+  end
+
+  def create
+    vehicle_params = params.require(:vehicle).permit(
+      :identification_plate, :vehicle_brand, :vehicle_type,
+      :fabrication_year, :max_load_capacity, :transport_model_id
+  )
+
+    @vehicle = Vehicle.new(vehicle_params)
+    if @vehicle.save
+      redirect_to vehicles_path, notice: 'Veículo cadastrado com sucesso.'
+    else
+      @transport_models = TransportModel.all
+      flash.now[:alert] = 'Veículo não cadastrado.'
+      render 'new'
+    end
+  end
 end
