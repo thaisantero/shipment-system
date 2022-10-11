@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Usuário cadastra veículo' do
-  it 'se estver autenticado' do
+  it 'se estiver autenticado' do
     visit new_vehicle_path
 
     expect(current_path).to eq new_user_session_path

@@ -16,20 +16,27 @@
         <th><%= Vehicle.human_attribute_name(:max_load_capacity)%></th>
         <th><%= TransportModel.model_name.human %></th>
         <th><%= Vehicle.human_attribute_name(:status)%></th>
+        <th> Ações </th>
       </tr>
     </thead>
     <tbody>
       <% @vehicles.each do | vehicles_in_same_status | %>
-          <% vehicles_in_same_status.each do | v | %>
-      <tr>
-        <td><%= v.identification_plate %> </td>
-        <td><%= v.vehicle_brand %> </td>
-        <td><%= v.vehicle_type %> </td>
-        <td><%= v.fabrication_year %> </td>
-        <td><%= v.max_load_capacity %>kg</td>
-        <td><%= v.transport_model.name %> </td>
-        <td><%= I18n.t(v.status) %> </td>
-      </tr>
+        <% vehicles_in_same_status.each do | v | %>
+          <tr>
+            <td><%= v.identification_plate %> </td>
+            <td><%= v.vehicle_brand %> </td>
+            <td><%= v.vehicle_type %> </td>
+            <td><%= v.fabrication_year %> </td>
+            <td><%= v.max_load_capacity %>kg</td>
+            <td><%= v.transport_model.name %> </td>
+            <td><%= I18n.t(v.status) %> </td>
+            <% if current_user.admin? %>
+              <% array_status = changeable_status(v.status) %>
+              <% array_status.each do | status | %>
+                <td> <%= button_to I18n.t(status), vehicle_path(v.id, vehicle: {status:status}), method: :patch%> </td>
+              <% end %>
+            <% end %>
+          </tr>
         <% end %>
       <% end %>
     </tbody>

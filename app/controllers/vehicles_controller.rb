@@ -25,7 +25,7 @@ class VehiclesController < ApplicationController
   def create
     vehicle_params = params.require(:vehicle).permit(
       :identification_plate, :vehicle_brand, :vehicle_type,
-      :fabrication_year, :max_load_capacity, :transport_model_id
+      :fabrication_year, :max_load_capacity, :transport_model_id, :status
   )
 
     @vehicle = Vehicle.new(vehicle_params)
@@ -36,5 +36,16 @@ class VehiclesController < ApplicationController
       flash.now[:alert] = 'Veículo não cadastrado.'
       render 'new'
     end
+  end
+
+  def update
+    # debugger
+    vehicle_params = params.require(:vehicle).permit(
+      :identification_plate, :vehicle_brand, :vehicle_type,
+      :fabrication_year, :max_load_capacity, :transport_model_id, :status
+    )
+    @vehicle = Vehicle.find(params[:id])
+    @vehicle.update(vehicle_params)
+    redirect_to vehicles_path, notice: 'Veículo atualizado com sucesso.'
   end
 end
