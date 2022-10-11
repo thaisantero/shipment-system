@@ -26,7 +26,7 @@ class VehiclesController < ApplicationController
     vehicle_params = params.require(:vehicle).permit(
       :identification_plate, :vehicle_brand, :vehicle_type,
       :fabrication_year, :max_load_capacity, :transport_model_id, :status
-  )
+    )
 
     @vehicle = Vehicle.new(vehicle_params)
     if @vehicle.save
@@ -39,13 +39,23 @@ class VehiclesController < ApplicationController
   end
 
   def update
-    # debugger
     vehicle_params = params.require(:vehicle).permit(
       :identification_plate, :vehicle_brand, :vehicle_type,
       :fabrication_year, :max_load_capacity, :transport_model_id, :status
     )
     @vehicle = Vehicle.find(params[:id])
-    @vehicle.update(vehicle_params)
-    redirect_to vehicles_path, notice: 'Veículo atualizado com sucesso.'
+    if @vehicle.update(vehicle_params)
+      @vehicle.update(vehicle_params)
+      redirect_to vehicles_path, notice: 'Veículo atualizado com sucesso.'
+    else
+      flash.now[:notice] = 'Não foi possível atualizar veículo.'
+      @transport_models = TransportModel.all
+      render 'edit'
+    end
+  end
+
+  def edit
+    @vehicle = Vehicle.find(params[:id])
+    @transport_models = TransportModel.all
   end
 end

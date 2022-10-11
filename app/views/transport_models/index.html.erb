@@ -25,11 +25,9 @@
         <td> <%= number_to_currency(tm.fixed_rate, unit: "R$", separator: ",") %></td>
         <% if current_user.admin? %>
           <td> <%= button_to I18n.t(tm.status), change_status_transport_model_path(tm.id), { method: 'patch' } %> </td>
+          <td> <%= link_to 'Editar', edit_transport_model_path(tm.id)%> </td>
         <% else %>
           <td> <%= I18n.t(tm.status) %> </td>
-        <% end %>
-        <% if current_user.admin? %>
-          <td> <%= link_to 'Editar', edit_transport_model_path(tm.id)%> </td>
         <% end %>
       </tr>
       <% end %>

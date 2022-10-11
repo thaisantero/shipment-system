@@ -35,6 +35,7 @@
               <% array_status.each do | status | %>
                 <td> <%= button_to I18n.t(status), vehicle_path(v.id, vehicle: {status:status}), method: :patch%> </td>
               <% end %>
+              <td> <%= link_to 'Editar', edit_vehicle_path(v.id)%> </td>
             <% end %>
           </tr>
         <% end %>
