@@ -31,7 +31,7 @@ describe 'Usuário cadastra veículo' do
     visit root_path
     click_on 'Veículos'
     click_on 'Cadastrar novo veículo'
-    fill_in 'Placa de Identificação', with: 'PTU-2234'
+    fill_in 'Placa de Identificação', with: 'PTU2234'
     fill_in 'Marca', with: 'Fiat'
     fill_in 'Modelo', with: 'Fiat Scudo'
     fill_in 'Ano de Fabricação', with: 2018
@@ -43,7 +43,7 @@ describe 'Usuário cadastra veículo' do
     expect(current_path).to eq vehicles_path
     expect(page).to have_content 'Veículo cadastrado com sucesso.'
     expect(page).to have_content('Express')
-    expect(page).to have_content('PTU-2234')
+    expect(page).to have_content('PTU2234')
     expect(page).to have_content('Fiat')
     expect(page).to have_content('Fiat Scudo')
     expect(page).to have_content('2018')

@@ -8,7 +8,7 @@ describe 'Usuário edita um veículo' do
       maximum_weight: 10_000, fixed_rate: 10
     )
     Vehicle.create!(
-      identification_plate: 'PNG-0000', vehicle_brand: 'Volkswagen',
+      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen',
       vehicle_type: 'Van 1.6 Mi', fabrication_year: 2016,
       max_load_capacity: 10_000, transport_model: transport_model, status: :waiting
     )
@@ -29,7 +29,7 @@ describe 'Usuário edita um veículo' do
       maximum_weight: 10_000, fixed_rate: 10
     )
     Vehicle.create!(
-      identification_plate: 'PNG-0000', vehicle_brand: 'Volkswagen',
+      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen',
       vehicle_type: 'Van 1.6 Mi', fabrication_year: 2016,
       max_load_capacity: 10_000, transport_model: transport_model, status: :waiting
     )
@@ -40,7 +40,7 @@ describe 'Usuário edita um veículo' do
     click_on 'Editar'
 
     expect(page).to have_content('Editar Veículo')
-    expect(page).to have_field('Placa de Identificação', with: 'PNG-0000')
+    expect(page).to have_field('Placa de Identificação', with: 'PNG0000')
     expect(page).to have_field('Marca', with: 'Volkswagen')
     expect(page).to have_field('Modelo', with: 'Van 1.6 Mi')
     expect(page).to have_field('Ano de Fabricação', with: '2016')
@@ -54,7 +54,7 @@ describe 'Usuário edita um veículo' do
       maximum_weight: 10_000, fixed_rate: 10
     )
     Vehicle.create!(
-      identification_plate: 'PNG-0000', vehicle_brand: 'Volkswagen',
+      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen',
       vehicle_type: 'Van 1.6 Mi', fabrication_year: 2016,
       max_load_capacity: 10_000, transport_model: transport_model, status: :waiting
     )
@@ -63,13 +63,13 @@ describe 'Usuário edita um veículo' do
     visit root_path
     click_on 'Veículos'
     click_on 'Editar'
-    fill_in 'Placa de Identificação', with: 'PXY-1050'
+    fill_in 'Placa de Identificação', with: 'PXY1050'
     fill_in 'Marca', with: 'Chevrolet'
     fill_in 'Ano de Fabricação', with: '2020'
     click_on 'Cadastrar'
 
     expect(page).to have_content('Veículo atualizado com sucesso.')
-    expect(page).to have_content('PXY-1050')
+    expect(page).to have_content('PXY1050')
     expect(page).to have_content('Chevrolet')
     expect(page).to have_content('2020')
   end
@@ -81,7 +81,7 @@ describe 'Usuário edita um veículo' do
       maximum_weight: 10_000, fixed_rate: 10
     )
     Vehicle.create!(
-      identification_plate: 'PNG-0000', vehicle_brand: 'Volkswagen',
+      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen',
       vehicle_type: 'Van 1.6 Mi', fabrication_year: 2016,
       max_load_capacity: 10_000, transport_model: transport_model, status: :waiting
     )

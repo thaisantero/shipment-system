@@ -15,7 +15,7 @@ describe 'Usuário muda status do veículo' do
       maximum_weight: 10_000, fixed_rate: 10, status: 'active'
     )
     Vehicle.create!(
-      identification_plate: 'PNG-0000', vehicle_brand: 'Volkswagen', 
+      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen', 
       vehicle_type: 'Van 1.6 Mi', fabrication_year: 2016,
       max_load_capacity: 10_000, transport_model: transport_model, status: :waiting
     )
@@ -38,7 +38,7 @@ describe 'Usuário muda status do veículo' do
       maximum_weight: 10_000, fixed_rate: 10, status: 'active'
     )
     Vehicle.create!(
-      identification_plate: 'PNG-0000', vehicle_brand: 'Volkswagen', 
+      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen', 
       vehicle_type: 'Van 1.6 Mi', fabrication_year: 2016,
       max_load_capacity: 10_000, transport_model: transport_model, status: :waiting
     )
@@ -64,7 +64,7 @@ describe 'Usuário muda status do veículo' do
       maximum_weight: 10_000, fixed_rate: 10, status: 'active'
     )
     Vehicle.create!(
-      identification_plate: 'PNG-0000', vehicle_brand: 'Volkswagen', 
+      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen', 
       vehicle_type: 'Van 1.6 Mi', fabrication_year: 2016,
       max_load_capacity: 10_000, transport_model: transport_model, status: :waiting
     )
@@ -90,7 +90,7 @@ describe 'Usuário muda status do veículo' do
       maximum_weight: 10_000, fixed_rate: 10, status: 'active'
     )
     Vehicle.create!(
-      identification_plate: 'PNG-0000', vehicle_brand: 'Volkswagen',
+      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen',
       vehicle_type: 'Van 1.6 Mi', fabrication_year: 2016,
       max_load_capacity: 10_000, transport_model: transport_model, status: :active
     )

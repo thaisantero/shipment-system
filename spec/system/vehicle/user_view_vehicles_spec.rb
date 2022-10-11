@@ -16,7 +16,7 @@ describe 'Usuário vê veículos cadastrados' do
       maximum_weight: 10_000, fixed_rate: 10, status: 'active'
     )
     Vehicle.create(
-      identification_plate: 'PNG-0000', vehicle_brand: 'Volkswagen', 
+      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen', 
       vehicle_type: 'Van 1.6 Mi', fabrication_year: 2016,
       max_load_capacity: 10_000, transport_model: transport_model
     )
@@ -35,7 +35,7 @@ describe 'Usuário vê veículos cadastrados' do
     expect(page).to have_content('Capacidade Máxima de Carga')
     expect(page).to have_content('Modelo de Transporte')
     expect(page).to have_content('Situação')
-    expect(page).to have_content('PNG-0000')
+    expect(page).to have_content('PNG0000')
     expect(page).to have_content('Volkswagen')
     expect(page).to have_content('Van 1.6 Mi')
     expect(page).to have_content('2016')
