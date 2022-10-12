@@ -24,18 +24,12 @@ describe 'Usuário vê modelos de transporte cadastrados' do
     # Assert
     expect(page).not_to have_content('Nao existem modelos de transporte cadastrados')
 
-    expect(page).to have_content('Intervalo de Distância aceitável')
-    expect(page).to have_content('Intervalo de Peso suportável')
     expect(page).to have_content('Taxa Fixa')
     expect(page).to have_content('Situação')
     expect(page).to have_content('Express')
-    expect(page).to have_content('50 - 200km')
-    expect(page).to have_content('10 - 10000kg')
     expect(page).to have_content('R$10,00')
     expect(page).to have_content('Ativo')
     expect(page).to have_content('Bike')
-    expect(page).to have_content('1 - 10km')
-    expect(page).to have_content('1 - 10kg')
     expect(page).to have_content('R$5,00')
     expect(page).to have_content('Desativado')
   end

@@ -10,8 +10,6 @@
     <thead>
       <tr>
         <th><%= TransportModel.model_name.human %></th>
-        <th>Intervalo de Distância aceitável</th>
-        <th>Intervalo de Peso suportável</th>
         <th><%= TransportModel.human_attribute_name(:fixed_rate)%></th>
         <th><%= TransportModel.human_attribute_name(:status)%></th>
       </tr>
@@ -19,9 +17,7 @@
     <tbody>
       <% @transport_models.each do | tm | %>
       <tr>
-        <td><%= tm.name %> </td>
-        <td> <%= tm.minimum_distance %> - <%= tm.maximum_distance %>km</td>
-        <td> <%= tm.minimum_weight %> - <%= tm.maximum_weight %>kg</td>
+        <td><%= link_to tm.name, tm %> </td>
         <td> <%= number_to_currency(tm.fixed_rate, unit: "R$", separator: ",") %></td>
         <% if current_user.admin? %>
           <td> <%= button_to I18n.t(tm.status), change_status_transport_model_path(tm.id), { method: 'patch' } %> </td>

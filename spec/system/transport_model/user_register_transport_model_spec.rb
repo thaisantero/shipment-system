@@ -36,12 +36,11 @@ describe 'Usuário cadastra modelo de transporte' do
     click_on 'Cadastrar'
 
     # Assert
-    expect(current_path).to eq transport_models_path
     expect(page).to have_content 'Modelo de Transporte cadastrado com sucesso.'
-    expect(page).to have_content('Sedex')
-    expect(page).to have_content('200 - 4000km')
-    expect(page).to have_content('100 - 1000kg')
-    expect(page).to have_content('R$50,00')
+    expect(page).to have_content('Intervalo de Distância aceitável: 200 - 4000km')
+    expect(page).to have_content('Intervalo de Peso suportável: 100 - 1000kg')
+    expect(page).to have_content('Taxa Fixa: R$50,00')
+    expect(page).to have_content('Situação: Ativo')
   end
 
   it 'com dados incompletos' do

@@ -13,7 +13,7 @@ class TransportModelsController < ApplicationController
 
     if @transport_model.save
       flash[:notice] = 'Modelo de Transporte cadastrado com sucesso.'
-      redirect_to transport_models_path
+      redirect_to transport_model_path(@transport_model.id)
     else
       flash.now[:notice] = 'Modelo de Transporte não cadastrado.'
       render 'new'
@@ -29,11 +29,15 @@ class TransportModelsController < ApplicationController
 
     if @transport_model.update(transport_model_params)
       flash[:notice] = 'Modelo de Transporte atualizado com sucesso.'
-      redirect_to transport_models_path
+      redirect_to transport_model_path(@transport_model.id)
     else
       flash.now[:notice] = 'Não foi possível atualizar o modelo de transporte.'
       render 'edit'
     end
+  end
+
+  def show
+    @transport_model = TransportModel.find(params[:id])
   end
 
   def change_status

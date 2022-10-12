@@ -1,0 +1,12 @@
+<h2> <%= TransportModel.model_name.human %>: <%=@transport_model.name%></h2>
+
+<dl>
+  <dt> Intervalo de Distância aceitável:</dt>
+  <dd> <%= @transport_model.minimum_distance %> - <%= @transport_model.maximum_distance %>km</dd>
+  <dt> Intervalo de Peso suportável:</dt>
+  <dd> <%= @transport_model.minimum_weight %> - <%= @transport_model.maximum_weight %>kg</dd>
+  <dt> <%= TransportModel.human_attribute_name(:fixed_rate)%>:</dt>
+  <dd> <%= number_to_currency(@transport_model.fixed_rate, unit: "R$", separator: ",") %></dd>
+  <dt> <%= TransportModel.human_attribute_name(:status)%>:</dt>
+  <dd><%= I18n.t(@transport_model.status) %></dd>
+</dl>
