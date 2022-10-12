@@ -36,6 +36,6 @@ pt-BR:
       price_by_distance:
         start_range: 'Distância Mínima'
         end_range: 'Distância Máxima'
-        price_for_km: 'Preço por km'
+        distance_tax: 'Taxa por Distância'
         transport_model_id: 'Modelo de Transporte'
         transport_model: 'Modelo de Transporte'

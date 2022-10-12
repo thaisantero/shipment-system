@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_095945) do
   create_table "price_by_distances", force: :cascade do |t|
     t.integer "start_range"
     t.integer "end_range"
-    t.decimal "price_for_km"
+    t.decimal "distance_tax"
     t.integer "transport_model_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -3,7 +3,7 @@ class CreatePriceByDistances < ActiveRecord::Migration[7.0]
     create_table :price_by_distances do |t|
       t.integer :start_range
       t.integer :end_range
-      t.decimal :price_for_km
+      t.decimal :distance_tax
       t.references :transport_model, null: false, foreign_key: true
 
       t.timestamps

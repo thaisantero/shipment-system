@@ -38,7 +38,9 @@ class TransportModelsController < ApplicationController
 
   def show
     @transport_model = TransportModel.find(params[:id])
+    @transport_models = TransportModel.all
     @price_by_distances = PriceByDistance.where(transport_model_id: @transport_model.id)
+    @price_by_distance = PriceByDistance.new
   end
 
   def change_status

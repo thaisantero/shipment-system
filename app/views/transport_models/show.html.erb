@@ -13,6 +13,26 @@
   </dl>
 </div>
 
+<% if current_user.admin? %>
+  <%= form_with(model: @price_by_distance, url:transport_model_price_by_distances_path(@transport_model.id)) do | pd |%>
+    <div>
+      <%= pd.label :start_range %>
+      <%= pd.number_field :start_range%>
+    </div>
+    <div>
+      <%= pd.label :end_range %>
+      <%= pd.number_field :end_range %>
+    </div>
+    <div>
+      <%= pd.label :distance_tax%>
+      <%= pd.number_field :distance_tax, step: 0.10 %>
+    </div>
+    <div>
+      <%= pd.submit 'Cadastrar Taxa por Distância'%>
+    </div>
+  <% end %>
+<% end %>
+
 <div>
   <% if @price_by_distances.any? %>
     <table>
@@ -20,7 +40,7 @@
         <tr>
           <th> <%= PriceByDistance.human_attribute_name(:start_range)%></th>
           <th><%= PriceByDistance.human_attribute_name(:end_range)%></th>
-          <th><%= PriceByDistance.human_attribute_name(:price_for_km)%></th>
+          <th><%= PriceByDistance.human_attribute_name(:distance_tax)%></th>
         </tr>
       </thead>
       <tbody>
@@ -28,7 +48,7 @@
         <tr>
           <td><%= price_by_distance.start_range %> km</td>
           <td><%= price_by_distance.end_range %> km</td>
-          <td>  <%=  number_to_currency(price_by_distance.price_for_km, unit: "R$", separator: ",")%> </td>
+          <td>  <%=  number_to_currency(price_by_distance.distance_tax, unit: "R$", separator: ",")%> </td>
         </tr>
         <% end %>
       </tbody>
