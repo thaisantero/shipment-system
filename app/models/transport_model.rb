@@ -4,4 +4,5 @@ class TransportModel < ApplicationRecord
   validates :minimum_distance, :maximum_distance, :fixed_rate, :minimum_weight,
             :maximum_weight, numericality: { greater_than_or_equal_to: 0, :message => "não pode ser negativa"}
   has_many :vehicles
+  has_many :price_by_distances
 end
