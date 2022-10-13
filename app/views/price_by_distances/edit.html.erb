@@ -1,0 +1,34 @@
+<h2>Editar Taxa por Distância</h2>
+
+<% if @price_by_distance.errors.any? %>
+  <p> Verifique os erros abaixo: </p>
+  <ul>
+    <% @price_by_distance.errors.full_messages.each do | msg |%>
+      <li> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="price_by_distance" id="form">
+  <% if current_user.admin? %>
+      <%= form_with(model: @price_by_distance) do | pd |%>
+      <%= pd.hidden_field :transport_model_id, value: @price_by_distance.transport_model_id, readonly: true %>
+      <div>
+        <%= pd.label :start_range %>
+        <%= pd.number_field :start_range, required: true %>
+      </div>
+      <div>
+        <%= pd.label :end_range %>
+        <%= pd.number_field :end_range, required: true %>
+      </div>
+      <div>
+        <%= pd.label :distance_tax%>
+        <%= pd.number_field :distance_tax, step: 0.10, required: true %>
+      </div>
+      <div>
+        <%= pd.submit 'Cadastrar Taxa por Distância'%>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+

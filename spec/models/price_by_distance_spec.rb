@@ -65,7 +65,9 @@ RSpec.describe PriceByDistance, type: :model do
 
           price_by_distance_second.validate
 
-          expect(price_by_distance_second.errors[:start_range]).to include "não pode ser diferente do valor da distância máxima do intervalo anterior #{price_by_distance_first.end_range}"
+          expect(price_by_distance_second.errors[:start_range]).to include
+          'Distância Mínima não pode ser diferente do valor da distância máxima do intervalo anterior
+          ou menor que distância mínima da modalide de transporte'
         end
       end
 
@@ -95,7 +97,9 @@ RSpec.describe PriceByDistance, type: :model do
 
           price_by_distance.validate
 
-          expect(price_by_distance.errors[:start_range]).to include "não pode ser diferente do valor da distância máxima do intervalo anterior #{transport_model.minimum_distance}"
+          expect(price_by_distance.errors[:start_range]).to include 
+          'Distância Mínima não pode ser diferente do valor da distância máxima do intervalo anterior
+          ou menor que distância mínima da modalide de transporte'
         end
       end
 
@@ -110,7 +114,7 @@ RSpec.describe PriceByDistance, type: :model do
             distance_tax: 5, transport_model:
           )
           price_by_distance_second = PriceByDistance.new(
-            start_range: 55, end_range: 65,
+            start_range: 50, end_range: 65,
             distance_tax: 5, transport_model:
           )
 
@@ -236,9 +240,39 @@ RSpec.describe PriceByDistance, type: :model do
               name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
               maximum_weight: 10_000, fixed_rate: 10, status: 'active'
             )
-            price_by_distance_second = PriceByDistance.create(
+            price_by_distance_second = PriceByDistance.new(
               start_range: 50, end_range: 150,
               distance_tax: '', transport_model:
+            )
+
+            expect(price_by_distance_second).not_to be_valid
+          end
+        end
+
+        context 'quando start_range não foi preenchida' do
+          it 'é inválido' do
+            transport_model = TransportModel.create(
+              name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
+              maximum_weight: 10_000, fixed_rate: 10, status: 'active'
+            )
+            price_by_distance_second = PriceByDistance.new(
+              start_range: nil, end_range: 150,
+              distance_tax: 5, transport_model:
+            )
+
+            expect(price_by_distance_second).not_to be_valid
+          end
+        end
+
+        context 'quando end_range não foi preenchida' do
+          it 'é inválido' do
+            transport_model = TransportModel.create(
+              name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
+              maximum_weight: 10_000, fixed_rate: 10, status: 'active'
+            )
+            price_by_distance_second = PriceByDistance.new(
+              start_range: 50, end_range: nil,
+              distance_tax: 5, transport_model:
             )
 
             expect(price_by_distance_second).not_to be_valid
@@ -255,7 +289,7 @@ RSpec.describe PriceByDistance, type: :model do
               start_range: 50, end_range: 60,
               distance_tax: 5, transport_model:
             )
-            price_by_distance_second = PriceByDistance.create(
+            price_by_distance_second = PriceByDistance.new(
               start_range: 50, end_range: 70,
               distance_tax: 10, transport_model:
             )
@@ -263,7 +297,7 @@ RSpec.describe PriceByDistance, type: :model do
             expect(price_by_distance_second).not_to be_valid
           end
         end
-        
+
         context 'quando end_range não for único' do
           it 'é inválido' do
             transport_model = TransportModel.create(
@@ -289,6 +323,22 @@ RSpec.describe PriceByDistance, type: :model do
             )
 
             expect(price_by_distance_forth).not_to be_valid
+          end
+        end
+
+        context 'quando distance_tax for negativa' do
+          it 'é inválido' do
+            transport_model = TransportModel.create(
+              name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
+              maximum_weight: 10_000, fixed_rate: 10, status: 'active'
+            )
+            # debugger
+            price_by_distance = PriceByDistance.new(
+              start_range: 50, end_range: 100,
+              distance_tax: -5, transport_model:
+            )
+
+            expect(price_by_distance).not_to be_valid
           end
         end
       end
