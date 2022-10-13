@@ -114,6 +114,27 @@
 
 <h3>Prazo Estimado</h3>
 
+<div class="delivery_time_table" id="form">
+  <% if current_user.admin? %>
+    <%= form_with(model: @delivery_time_table, url:transport_model_delivery_time_table_index_path(@transport_model.id)) do | dt |%>
+      <div>
+        <%= dt.label :start_range %>
+        <%= dt.number_field :start_range%>
+      </div>
+      <div>
+        <%= dt.label :end_range %>
+        <%= dt.number_field :end_range %>
+      </div>
+      <div>
+        <%= dt.label :delivery_time%>
+        <%= dt.number_field :delivery_time %>
+      </div>
+      <div>
+        <%= dt.submit 'Cadastrar Prazo Estimado'%>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 
 <div>
   <% if @delivery_times_table.any? %>

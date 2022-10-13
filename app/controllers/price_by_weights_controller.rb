@@ -8,10 +8,10 @@ class PriceByWeightsController < ApplicationController
   def create
     @price_by_weight = PriceByWeight.new(price_by_weight_params)
     if @price_by_weight.save
-      flash[:notice] = 'Taxa por Distância cadastrado com sucesso.'
+      flash[:notice] = 'Preço por Distância cadastrado com sucesso.'
       redirect_to transport_model_path(@price_by_weight.transport_model_id)
     else
-      flash.now[:notice] = 'Taxa por Distância não cadastrado.'
+      flash.now[:notice] = 'Preço por Distância não cadastrado.'
       redirect_to transport_model_path(params[:transport_model_id])
     end
   end
