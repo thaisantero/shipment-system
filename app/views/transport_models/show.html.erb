@@ -14,20 +14,31 @@
 </div>
 
 <h3>Taxa de Distância</h3>
+
+<% if !flash[:price_by_distance_errors].nil? %>
+  <p> Verifique os erros abaixo: </p>
+  <ul>
+    <% flash[:price_by_distance_errors].each do | msg |%>
+      <li> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div class="price_by_distance" id="form">
   <% if current_user.admin? %>
-    <%= form_with(model: @price_by_distance, url:transport_model_price_by_distances_path(@transport_model.id)) do | pd |%>
+    <%= form_with(model: @price_by_distance) do | pd |%>
+      <%= pd.hidden_field :transport_model_id, value: @transport_model.id, readonly: true %>
       <div>
         <%= pd.label :start_range %>
-        <%= pd.number_field :start_range%>
+        <%= pd.number_field :start_range, required: true %>
       </div>
       <div>
         <%= pd.label :end_range %>
-        <%= pd.number_field :end_range %>
+        <%= pd.number_field :end_range, required: true %>
       </div>
       <div>
         <%= pd.label :distance_tax%>
-        <%= pd.number_field :distance_tax, step: 0.10 %>
+        <%= pd.number_field :distance_tax, step: 0.10, required: true %>
       </div>
       <div>
         <%= pd.submit 'Cadastrar Taxa por Distância'%>
@@ -53,7 +64,7 @@
           <td><%= price_by_distance.end_range %> km</td>
           <td>  <%=  number_to_currency(price_by_distance.distance_tax, unit: "R$", separator: ",")%> </td>
           <% if current_user.admin? %>
-            <td> <%= link_to 'Editar', edit_transport_model_price_by_distance_path(price_by_distance.id) %> </td>
+            <td> <%= link_to 'Editar', edit_price_by_distance_path(price_by_distance) %> </td>
           <% end %>
         </tr>
         <% end %>
@@ -67,7 +78,8 @@
 <div class="price_by_weight" id="form">
   <h3>Preço por Peso</h3>
   <% if current_user.admin? %>
-    <%= form_with(model: @price_by_weight, url:transport_model_price_by_weights_path(@transport_model.id)) do | pw |%>
+    <%= form_with(model: @price_by_weight) do | pw |%>
+      <%= pw.hidden_field :transport_model_id, value: @transport_model.id, readonly: true %>
       <div>
         <%= pw.label :start_range %>
         <%= pw.number_field :start_range%>
@@ -116,7 +128,8 @@
 
 <div class="delivery_time_table" id="form">
   <% if current_user.admin? %>
-    <%= form_with(model: @delivery_time_table, url:transport_model_delivery_time_table_index_path(@transport_model.id)) do | dt |%>
+    <%= form_with(model: @delivery_time_table, url: delivery_time_table_index_path) do | dt |%>
+      <%= dt.hidden_field :transport_model_id, value: @transport_model.id, readonly: true %>
       <div>
         <%= dt.label :start_range %>
         <%= dt.number_field :start_range%>

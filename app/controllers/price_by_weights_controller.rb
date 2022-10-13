@@ -12,7 +12,7 @@ class PriceByWeightsController < ApplicationController
       redirect_to transport_model_path(@price_by_weight.transport_model_id)
     else
       flash.now[:notice] = 'Preço por Distância não cadastrado.'
-      redirect_to transport_model_path(params[:transport_model_id])
+      redirect_to transport_model_path(price_by_weight_params[:transport_model_id])
     end
   end
 
@@ -20,7 +20,7 @@ class PriceByWeightsController < ApplicationController
 
   def price_by_weight_params
     params.require(:price_by_weight).permit(
-      :start_range, :end_range, :price_for_kg
-    ).merge({transport_model_id: params[:transport_model_id]})
+      :start_range, :end_range, :price_for_kg, :transport_model_id
+    )
   end
 end

@@ -20,7 +20,7 @@ class PriceByDistancesController < ApplicationController
 
   def price_by_distance_params
     params.require(:price_by_distance).permit(
-      :start_range, :end_range, :distance_tax
-    ).merge({transport_model_id: params[:transport_model_id]})
+      :start_range, :end_range, :distance_tax, :transport_model_id
+    )
   end
 end
