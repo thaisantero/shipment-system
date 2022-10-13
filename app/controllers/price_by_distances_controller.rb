@@ -11,8 +11,25 @@ class PriceByDistancesController < ApplicationController
       flash[:notice] = 'Taxa por Distância cadastrado com sucesso.'
       redirect_to transport_model_path(@price_by_distance.transport_model_id)
     else
-      flash.now[:notice] = 'Taxa por Distância não cadastrado.'
-      redirect_to transport_model_path(params[:transport_model_id])
+      flash[:notice] = 'Taxa por Distância não cadastrada.'
+      redirect_to transport_model_path(price_by_distance_params[:transport_model_id]), flash: {price_by_distance_errors: @price_by_distance.errors.full_messages}
+    end
+  end
+
+  def edit
+    @price_by_distance = PriceByDistance.find(params[:id])
+  end
+
+  def update
+    debugger
+    @price_by_distance = PriceByDistance.find(params[:id])
+
+    if @price_by_distance.update(price_by_distance_params)
+      flash[:notice] = 'Taxa por Distância atualizado com sucesso.'
+      redirect_to transport_model_path(@price_by_distance.transport_model)
+    else
+      flash.now[:notice] = 'Taxa por Distância não atualizada.'
+      render 'edit'
     end
   end
 
