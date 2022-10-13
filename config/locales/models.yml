@@ -39,3 +39,9 @@ pt-BR:
         distance_tax: 'Taxa por Distância'
         transport_model_id: 'Modelo de Transporte'
         transport_model: 'Modelo de Transporte'
+      price_by_weight:
+        start_range: 'Distância Mínima'
+        end_range: 'Distância Máxima'
+        distance_tax: 'Preço por Peso'
+        transport_model_id: 'Modelo de Transporte'
+        transport_model: 'Modelo de Transporte'

@@ -13,6 +13,7 @@
   </dl>
 </div>
 
+<h3>Taxa de Distância</h3>
 <% if current_user.admin? %>
   <%= form_with(model: @price_by_distance, url:transport_model_price_by_distances_path(@transport_model.id)) do | pd |%>
     <div>
@@ -49,11 +50,40 @@
           <td><%= price_by_distance.start_range %> km</td>
           <td><%= price_by_distance.end_range %> km</td>
           <td>  <%=  number_to_currency(price_by_distance.distance_tax, unit: "R$", separator: ",")%> </td>
+          <% if current_user.admin? %>
+            <td> <%= link_to 'Editar', edit_transport_model_price_by_distance_path(price_by_distance.id) %> </td>
+          <% end %>
         </tr>
         <% end %>
       </tbody>
     </table>
   <% else %>
     <p>Nao existem preços por distância cadastrados.</p>
+  <% end %>
+</div>
+
+<h3>Preço por Peso</h3>
+<div>
+  <% if @price_by_weights.any? %>
+    <table>
+      <thead>
+        <tr>
+          <th> <%= PriceByWeight.human_attribute_name(:start_range)%></th>
+          <th><%= PriceByWeight.human_attribute_name(:end_range)%></th>
+          <th><%= PriceByWeight.human_attribute_name(:price_for_kg)%></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @price_by_weights.each do | price_by_wight | %>
+        <tr>
+          <td><%= price_by_wight.start_range %> km</td>
+          <td><%= price_by_wight.end_range %> km</td>
+          <td>  <%=  number_to_currency(price_by_wight.price_for_kg, unit: "R$", separator: ",")%> </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Nao existem preços por peso cadastrados.</p>
   <% end %>
 </div>
