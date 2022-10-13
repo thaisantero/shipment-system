@@ -111,3 +111,31 @@
     <p>Nao existem preços por peso cadastrados.</p>
   <% end %>
 </div>
+
+<h3>Prazo Estimado</h3>
+
+
+<div>
+  <% if @delivery_times_table.any? %>
+    <table>
+      <thead>
+        <tr>
+          <th> <%= DeliveryTimeTable.human_attribute_name(:start_range)%></th>
+          <th><%= DeliveryTimeTable.human_attribute_name(:end_range)%></th>
+          <th><%= DeliveryTimeTable.human_attribute_name(:delivery_time)%></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @delivery_times_table.each do | delivery_time_row | %>
+        <tr>
+          <td><%= delivery_time_row.start_range %> km</td>
+          <td><%= delivery_time_row.end_range %> km</td>
+          <td><%= delivery_time_row.delivery_time %> h </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Nao existem estimativa de prazos cadastrados.</p>
+  <% end %>
+</div>

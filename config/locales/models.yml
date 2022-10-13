@@ -45,3 +45,9 @@ pt-BR:
         price_for_kg: 'Preço por Peso'
         transport_model_id: 'Modelo de Transporte'
         transport_model: 'Modelo de Transporte'
+      delivery_time_table:
+        start_range: 'Distância Mínima'
+        end_range: 'Distância Máxima'
+        delivery_time: 'Prazo Estimado'
+        transport_model_id: 'Modelo de Transporte'
+        transport_model: 'Modelo de Transporte'

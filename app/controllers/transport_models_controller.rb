@@ -43,6 +43,8 @@ class TransportModelsController < ApplicationController
     @price_by_distance = PriceByDistance.new
     @price_by_weights = PriceByWeight.where(transport_model_id: @transport_model.id)
     @price_by_weight = PriceByWeight.new
+    @delivery_times_table = DeliveryTimeTable.where(transport_model_id: @transport_model.id)
+    @delivery_time_table = DeliveryTimeTable.new
   end
 
   def change_status
