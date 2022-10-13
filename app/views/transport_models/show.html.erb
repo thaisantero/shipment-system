@@ -65,6 +65,7 @@
           <td>  <%=  number_to_currency(price_by_distance.distance_tax, unit: "R$", separator: ",")%> </td>
           <% if current_user.admin? %>
             <td> <%= link_to 'Editar', edit_price_by_distance_path(price_by_distance) %> </td>
+            <td> <%= button_to 'Remover', price_by_distance_path(price_by_distance), method: :delete %> </td>
           <% end %>
         </tr>
         <% end %>

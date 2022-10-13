@@ -21,7 +21,6 @@ class PriceByDistancesController < ApplicationController
   end
 
   def update
-    debugger
     @price_by_distance = PriceByDistance.find(params[:id])
 
     if @price_by_distance.update(price_by_distance_params)
@@ -31,6 +30,14 @@ class PriceByDistancesController < ApplicationController
       flash.now[:notice] = 'Taxa por Distância não atualizada.'
       render 'edit'
     end
+  end
+
+
+  def destroy
+    @price_by_distance = PriceByDistance.find(params[:id])
+    @price_by_distance.destroy
+    flash[:notice] = 'Taxa por Distância removida com sucesso.'
+    redirect_to transport_model_path(@price_by_distance.transport_model)
   end
 
   private
