@@ -14,25 +14,27 @@
 </div>
 
 <h3>Taxa de Distância</h3>
-<% if current_user.admin? %>
-  <%= form_with(model: @price_by_distance, url:transport_model_price_by_distances_path(@transport_model.id)) do | pd |%>
-    <div>
-      <%= pd.label :start_range %>
-      <%= pd.number_field :start_range%>
-    </div>
-    <div>
-      <%= pd.label :end_range %>
-      <%= pd.number_field :end_range %>
-    </div>
-    <div>
-      <%= pd.label :distance_tax%>
-      <%= pd.number_field :distance_tax, step: 0.10 %>
-    </div>
-    <div>
-      <%= pd.submit 'Cadastrar Taxa por Distância'%>
-    </div>
+<div class="price_by_distance" id="form">
+  <% if current_user.admin? %>
+    <%= form_with(model: @price_by_distance, url:transport_model_price_by_distances_path(@transport_model.id)) do | pd |%>
+      <div>
+        <%= pd.label :start_range %>
+        <%= pd.number_field :start_range%>
+      </div>
+      <div>
+        <%= pd.label :end_range %>
+        <%= pd.number_field :end_range %>
+      </div>
+      <div>
+        <%= pd.label :distance_tax%>
+        <%= pd.number_field :distance_tax, step: 0.10 %>
+      </div>
+      <div>
+        <%= pd.submit 'Cadastrar Taxa por Distância'%>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
 <div>
   <% if @price_by_distances.any? %>
@@ -62,7 +64,29 @@
   <% end %>
 </div>
 
-<h3>Preço por Peso</h3>
+<div class="price_by_weight" id="form">
+  <h3>Preço por Peso</h3>
+  <% if current_user.admin? %>
+    <%= form_with(model: @price_by_weight, url:transport_model_price_by_weights_path(@transport_model.id)) do | pw |%>
+      <div>
+        <%= pw.label :start_range %>
+        <%= pw.number_field :start_range%>
+      </div>
+      <div>
+        <%= pw.label :end_range %>
+        <%= pw.number_field :end_range %>
+      </div>
+      <div>
+        <%= pw.label :price_for_kg%>
+        <%= pw.number_field :price_for_kg, step: 0.10 %>
+      </div>
+      <div>
+        <%= pw.submit 'Cadastrar Preço por Peso'%>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
 <div>
   <% if @price_by_weights.any? %>
     <table>
