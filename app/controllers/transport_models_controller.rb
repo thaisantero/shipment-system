@@ -39,7 +39,7 @@ class TransportModelsController < ApplicationController
   def show
     @transport_model = TransportModel.find(params[:id])
     @transport_models = TransportModel.all
-    @price_by_distances = PriceByDistance.where(transport_model_id: @transport_model.id)
+    @price_by_distances = PriceByDistance.where(transport_model_id: @transport_model.id).sort_by(&:start_range)
     @price_by_distance = PriceByDistance.new
     @price_by_weights = PriceByWeight.where(transport_model_id: @transport_model.id)
     @price_by_weight = PriceByWeight.new
