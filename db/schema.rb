@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_12_095945) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_13_063638) do
   create_table "price_by_distances", force: :cascade do |t|
     t.integer "start_range"
     t.integer "end_range"
@@ -19,6 +19,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_095945) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["transport_model_id"], name: "index_price_by_distances_on_transport_model_id"
+  end
+
+  create_table "price_by_weights", force: :cascade do |t|
+    t.integer "start_range"
+    t.integer "end_range"
+    t.decimal "price_for_kg"
+    t.integer "transport_model_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["transport_model_id"], name: "index_price_by_weights_on_transport_model_id"
   end
 
   create_table "transport_models", force: :cascade do |t|
@@ -61,5 +71,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_095945) do
   end
 
   add_foreign_key "price_by_distances", "transport_models"
+  add_foreign_key "price_by_weights", "transport_models"
   add_foreign_key "vehicles", "transport_models"
 end
