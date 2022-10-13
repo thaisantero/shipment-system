@@ -64,8 +64,8 @@ describe 'Usuário cadastra modelo de transporte' do
     expect(page).to have_content('Nome não pode ficar em branco')
     expect(page).to have_content('Distância Mínima não pode ficar em branco')
     expect(page).to have_content('Distância Máxima não pode ficar em branco')
-    expect(page).not_to have_content('Peso Mínimo não pode ficar em branco')
-    expect(page).not_to have_content('Peso Máximo não pode ficar em branco')
+    expect(page).to have_content('Peso Mínimo não pode ficar em branco')
+    expect(page).to have_content('Peso Máximo não pode ficar em branco')
     expect(page).to have_content('Taxa Fixa não pode ficar em branco')
   end
 end

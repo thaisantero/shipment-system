@@ -30,6 +30,24 @@ RSpec.describe TransportModel, type: :model do
         expect(transport_model).not_to be_valid
       end
 
+      it 'falso quando peso mínimo está vazio' do
+        transport_model = TransportModel.create(
+          name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: nil,
+          maximum_weight: 10_000, fixed_rate: 10, status: 'active'
+        )
+
+        expect(transport_model).not_to be_valid
+      end
+
+      it 'falso quando peso máximo está vazio' do
+        transport_model = TransportModel.create(
+          name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
+          maximum_weight: nil, fixed_rate: 10, status: 'active'
+        )
+
+        expect(transport_model).not_to be_valid
+      end
+
       it 'falso quando taxa fixa está vazia' do
         transport_model = TransportModel.create(
           name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
