@@ -76,8 +76,18 @@
   <% end %>
 </div>
 
+<h3>Preço por Peso</h3>
+
+<% if !flash[:price_by_weight_errors].nil? %>
+  <p> Verifique os erros abaixo: </p>
+  <ul>
+    <% flash[:price_by_weight_errors].each do | msg |%>
+      <li> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div class="price_by_weight" id="form">
-  <h3>Preço por Peso</h3>
   <% if current_user.admin? %>
     <%= form_with(model: @price_by_weight) do | pw |%>
       <%= pw.hidden_field :transport_model_id, value: @transport_model.id, readonly: true %>
@@ -127,6 +137,17 @@
 
 <h3>Prazo Estimado</h3>
 
+
+<% if !flash[:delivery_time_table_errors].nil? %>
+  <p> Verifique os erros abaixo: </p>
+  <ul>
+    <% flash[:delivery_time_table_errors].each do | msg |%>
+      <li> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+
 <div class="delivery_time_table" id="form">
   <% if current_user.admin? %>
     <%= form_with(model: @delivery_time_table, url: delivery_time_table_index_path) do | dt |%>
@@ -144,7 +165,7 @@
         <%= dt.number_field :delivery_time %>
       </div>
       <div>
-        <%= dt.submit 'Cadastrar Prazo Estimado'%>
+        <%= dt.submit "Cadastrar #{DeliveryTimeTable.human_attribute_name(:delivery_time)}"%>
       </div>
     <% end %>
   <% end %>

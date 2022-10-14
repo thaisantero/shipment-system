@@ -48,6 +48,6 @@ pt-BR:
       delivery_time_table:
         start_range: 'Distância Mínima'
         end_range: 'Distância Máxima'
-        delivery_time: 'Prazo Estimado'
+        delivery_time: 'Prazo Estimado de Entrega'
         transport_model_id: 'Modelo de Transporte'
         transport_model: 'Modelo de Transporte'
