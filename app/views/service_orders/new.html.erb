@@ -1,0 +1,13 @@
+<h1> Nova Ordem de Serviço </h1>
+
+<% if @service_order.errors.any? %>
+  <p> Verifique os erros abaixo: </p>
+
+  <ul>
+    <% @service_order.errors.full_messages.each do | msg |%>
+      <li> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render 'form'%>

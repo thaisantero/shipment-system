@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   resources :price_by_distances, only: %i[new create edit update destroy]
   resources :price_by_weights, only: %i[new create edit update destroy]
   resources :delivery_time_table, only: %i[new create edit update destroy]
-  resources :service_order, only: %i[index]
+  resources :service_orders, only: %i[index new create]
 end

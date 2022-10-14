@@ -1,0 +1,56 @@
+<%= form_for(@service_order) do |f| %>
+  <div class="field">
+    <%= f.label :pickup_address %>
+    <%= f.text_field :pickup_address %>
+  </div>
+  <div class="field">
+    <%= f.label :pickup_cep %>
+    <%= f.text_field :pickup_cep %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_distance %>
+    <%= f.number_field :delivery_distance, step: 0.1 %>
+  </div>
+
+  <%= f.fields_for :customer, Customer.new do |customer_subform| %>
+    <div class="field">
+      <%= customer_subform.label :customer_address, Customer.human_attribute_name(:customer_address) %>
+      <%= customer_subform.text_field :customer_address %>
+    </div>
+    <div class="field">
+      <%= customer_subform.label :customer_cep, Customer.human_attribute_name(:customer_cep) %>
+      <%= customer_subform.text_field :customer_cep %>
+    </div>
+    <div class="field">
+      <%= customer_subform.label :customer_name, Customer.human_attribute_name(:customer_name) %>
+      <%= customer_subform.text_field :customer_name %>
+    </div>
+    <div class="field">
+      <%= customer_subform.label :customer_registration_number, Customer.human_attribute_name(:customer_registration_number) %>
+      <%= customer_subform.text_field :customer_registration_number %>
+    </div>
+  <% end %>
+
+    <%= f.fields_for :product, Product.new do |builder| %>
+    <div class="field">
+      <%= builder.label :length, Product.human_attribute_name(:length) %>
+      <%= builder.number_field :length %>
+    </div>
+    <div class="field">
+      <%= builder.label :width, Product.human_attribute_name(:width) %>
+      <%= builder.number_field :width %>
+    </div>
+    <div class="field">
+      <%= builder.label :height, Product.human_attribute_name(:height) %>
+      <%= builder.number_field :height %>
+    </div>
+    <div class="field">
+      <%= builder.label :weight, Product.human_attribute_name(:weight) %>
+      <%= builder.number_field :weight %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit 'Cadastrar Ordem de Serviço' %>
+  </div>
+<% end %>
