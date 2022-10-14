@@ -5,6 +5,9 @@ pt-BR:
   admin: 'Administrador(a)'
   waiting: 'Em Espera'
   maintenance: 'Em Manutenção'
+  pending: 'Pendente'
+  processed: 'Em Entrega'
+  delivered: 'Encerrada'
   activerecord:
     models:
       transport_model: 
@@ -15,6 +18,9 @@ pt-BR:
         other: 'Veículos'
       price_by_weight: 'Preço por Peso'
       delivery_time_table: 'Prazo Estimado de Entrega por Distância'
+      service_order: 'Ordem de Serviço'
+      product: 'Produto'
+      costumer: 'Cliente'
     attributes:
       transport_model:
         name: 'Nome'
@@ -53,3 +59,27 @@ pt-BR:
         delivery_time: 'Prazo Estimado de Entrega'
         transport_model_id: 'Modelo de Transporte'
         transport_model: 'Modelo de Transporte'
+      service_order:
+        code: 'Código'
+        pickup_address: 'Endereço de Retirada'
+        pickup_cep: 'CEP de Retirada'
+        delivery_distance: 'Distância de Entrega'
+        service_order_status: 'Status'
+        transport_model_id: 'Modelo de Tranporte'
+        estimated_delivery_time: 'Prazo de Entrega Estimado'
+        delivery_price: 'Valor do Frete'
+        customer_id: 'Cliente'
+        delivery_status: 'Status da Entrega'
+        delivery_description: 'Descrição da Entrega'
+      product:
+        length: 'Comprimento do Produto'
+        width: 'Largura do Produto'
+        height: 'Altura do Produto'
+        weight: 'Peso do Produto'
+        service_order_id: 'Ordemd e Serviço'
+      customer:
+        customer_address: 'Endereço de Entrega'
+        customer_cep: 'CEP da Entrega'
+        customer_name: 'Nome do Cliente'
+        customer_registration_number: 'CPF do Cliente'
+

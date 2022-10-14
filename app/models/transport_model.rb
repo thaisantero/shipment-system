@@ -9,4 +9,5 @@ class TransportModel < ApplicationRecord
   has_many :price_by_distances
   has_many :price_by_weights
   has_many :delivery_time_tables
+  has_many :service_orders
 end

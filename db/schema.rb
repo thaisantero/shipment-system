@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_13_094930) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_14_121624) do
+  create_table "customers", force: :cascade do |t|
+    t.string "customer_address"
+    t.string "customer_cep"
+    t.string "customer_name"
+    t.string "customer_registration_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "delivery_time_tables", force: :cascade do |t|
     t.integer "start_range"
     t.integer "end_range"
@@ -39,6 +48,38 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_094930) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["transport_model_id"], name: "index_price_by_weights_on_transport_model_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer "length"
+    t.integer "width"
+    t.integer "height"
+    t.decimal "weight"
+    t.integer "service_order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_order_id"], name: "index_products_on_service_order_id"
+  end
+
+  create_table "service_orders", force: :cascade do |t|
+    t.string "code"
+    t.string "pickup_address"
+    t.string "pickup_cep"
+    t.decimal "delivery_distance"
+    t.integer "customer_id", null: false
+    t.integer "service_order_status", default: 0
+    t.integer "transport_model_id"
+    t.integer "estimated_delivery_time"
+    t.decimal "delivery_price"
+    t.integer "vehicle_id"
+    t.datetime "delivery_date"
+    t.integer "delivery_status"
+    t.string "delivery_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_service_orders_on_customer_id"
+    t.index ["transport_model_id"], name: "index_service_orders_on_transport_model_id"
+    t.index ["vehicle_id"], name: "index_service_orders_on_vehicle_id"
   end
 
   create_table "transport_models", force: :cascade do |t|
@@ -83,5 +124,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_094930) do
   add_foreign_key "delivery_time_tables", "transport_models"
   add_foreign_key "price_by_distances", "transport_models"
   add_foreign_key "price_by_weights", "transport_models"
+  add_foreign_key "products", "service_orders"
+  add_foreign_key "service_orders", "customers"
+  add_foreign_key "service_orders", "transport_models"
+  add_foreign_key "service_orders", "vehicles"
   add_foreign_key "vehicles", "transport_models"
 end
