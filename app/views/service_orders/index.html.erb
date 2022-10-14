@@ -1,10 +1,16 @@
 <h2> <%=ServiceOrder.model_name.human%></h2>
 
+<nav>
+  <% if current_user.admin? %>
+    <%= link_to 'Cadastrar nova ordem de serviço', new_service_order_path %>
+  <% end %>
+</nav>
 
 <% if @service_orders.any? %>
   <table>
     <thead>
       <tr>
+        <th><%= ServiceOrder.human_attribute_name(:code)%></th>
         <th><%= ServiceOrder.human_attribute_name(:pickup_address)%></th>
         <th> Dimensões do Produto<br>(C x L x A)<br></th>
         <th><%= Product.human_attribute_name(:weight)%></th>
@@ -17,6 +23,7 @@
     <tbody>
       <% @service_orders.each do | service_order | %>
       <tr>
+        <td> <%= service_order.code %></td>
         <td> <%= service_order.pickup_address %><br>(<%= cep_formatted(service_order.pickup_cep) %>)<br></td>
         <td> <%= service_order.product.length%>cm x <%= service_order.product.width%>cm x <%= service_order.product.height%>cm</td>
         <td> <%= number_with_precision(service_order.product.weight, precision: 2, separator: ',') %> kg</td>
