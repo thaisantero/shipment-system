@@ -13,8 +13,8 @@ describe 'Usuário cadastra novo preço por peso' do
     click_on 'Modelos de Transporte'
     click_on 'Bike'
 
-    expect(page).not_to have_field 'Distância Mínima'
-    expect(page).not_to have_field 'Distância áxima'
+    expect(page).not_to have_field 'Peso Mínimo'
+    expect(page).not_to have_field 'Peso Máximo'
     expect(page).not_to have_field 'Preço por Peso'
   end
 
@@ -31,14 +31,14 @@ describe 'Usuário cadastra novo preço por peso' do
     click_on 'Bike'
 
     within('div#form.price_by_weight') do
-      fill_in 'Distância Mínima', with: 1
-      fill_in 'Distância Máxima', with: 4
+      fill_in 'Peso Mínimo', with: 1
+      fill_in 'Peso Máximo', with: 4
       fill_in 'Preço por Peso', with: 2.2
       click_on 'Cadastrar Preço por Peso'
     end
 
-    expect(page).to have_content 'Distância Mínima'
-    expect(page).to have_content 'Distância Máxima'
+    expect(page).to have_content 'Peso Mínimo'
+    expect(page).to have_content 'Peso Máximo'
     expect(page).to have_content 'Preço por Peso'
     expect(page).to have_content '1 km'
     expect(page).to have_content '4 km'
