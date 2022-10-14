@@ -40,8 +40,8 @@ describe 'Usuário cadastra novo preço por peso' do
     expect(page).to have_content 'Peso Mínimo'
     expect(page).to have_content 'Peso Máximo'
     expect(page).to have_content 'Preço por Peso'
-    expect(page).to have_content '1 km'
-    expect(page).to have_content '4 km'
+    expect(page).to have_content '1 kg'
+    expect(page).to have_content '4 kg'
     expect(page).to have_content 'R$2,20'
   end
 
@@ -65,8 +65,8 @@ describe 'Usuário cadastra novo preço por peso' do
     end
 
     expect(page).to have_content 'Preço por Peso não cadastrado'
-    expect(page).not_to have_content '3 km'
-    expect(page).not_to have_content '2 km'
+    expect(page).not_to have_content '3 kg'
+    expect(page).not_to have_content '2 kg'
     expect(page).not_to have_content 'R$-1,00'
     expect(page).to have_content 'Verifique os erros abaixo:'
     expect(page).to have_content 'Peso Máximo deve ser maior do que 3'

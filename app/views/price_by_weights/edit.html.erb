@@ -1,0 +1,33 @@
+<h2>Editar <%= PriceByWeight.model_name.human%> </h2>
+
+<% if @price_by_weight.errors.any? %>
+  <p> Verifique os erros abaixo: </p>
+  <ul>
+    <% @price_by_weight.errors.full_messages.each do | msg |%>
+      <li> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="price_by_weight" id="form">
+  <% if current_user.admin? %>
+      <%= form_with(model: @price_by_weight) do | pw |%>
+      <%= pw.hidden_field :transport_model_id, value: @price_by_weight.transport_model_id, readonly: true %>
+      <div>
+        <%= pw.label :start_range %>
+        <%= pw.number_field :start_range, required: true %>
+      </div>
+      <div>
+        <%= pw.label :end_range %>
+        <%= pw.number_field :end_range, required: true %>
+      </div>
+      <div>
+        <%= pw.label :price_for_kg%>
+        <%= pw.number_field :price_for_kg, step: 0.10, required: true %>
+      </div>
+      <div>
+        <%= pw.submit "Cadastrar #{PriceByWeight.human_attribute_name(:price_for_kg)}"%>
+      </div>
+    <% end %>
+  <% end %>
+</div>

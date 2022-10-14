@@ -37,6 +37,7 @@ describe 'Usuário cadastra novo Prazo Estimado de Entrega por intervalo de dist
       click_on 'Cadastrar Prazo Estimado de Entrega'
     end
 
+    expect(page).to have_content 'Prazo Estimado de Entrega por Distância cadastrado com sucesso.'
     expect(page).to have_content 'Distância Mínima'
     expect(page).to have_content 'Distância Máxima'
     expect(page).to have_content 'Prazo Estimado de Entrega'
@@ -65,7 +66,7 @@ describe 'Usuário cadastra novo Prazo Estimado de Entrega por intervalo de dist
       click_on 'Cadastrar Prazo Estimado de Entrega'
     end
 
-    expect(page).to have_content 'Prazo Estimado de Entrega não cadastrado'
+    expect(page).to have_content 'Prazo Estimado de Entrega por Distância não cadastrado'
     expect(page).not_to have_content '3 km'
     expect(page).not_to have_content '2 km'
     expect(page).not_to have_content '-1 h'

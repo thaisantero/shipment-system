@@ -16,6 +16,23 @@ class PriceByWeightsController < ApplicationController
     end
   end
 
+  def edit
+    @price_by_weight = PriceByWeight.find(params[:id])
+  end
+
+  def update
+    @price_by_weight = PriceByWeight.find(params[:id])
+
+    if @price_by_weight.update(price_by_weight_params)
+      flash[:notice] = 'Preço por Peso atualizado com sucesso.'
+      redirect_to transport_model_path(@price_by_weight.transport_model)
+    else
+      flash[:notice] = 'Preço por Peso não atualizado.'
+      render 'edit'
+    end
+  end
+
+
   private
 
   def price_by_weight_params

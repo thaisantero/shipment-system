@@ -121,11 +121,14 @@
         </tr>
       </thead>
       <tbody>
-        <% @price_by_weights.each do | price_by_wight | %>
+        <% @price_by_weights.each do | price_by_weight | %>
         <tr>
-          <td><%= price_by_wight.start_range %> km</td>
-          <td><%= price_by_wight.end_range %> km</td>
-          <td>  <%=  number_to_currency(price_by_wight.price_for_kg, unit: "R$", separator: ",")%> </td>
+          <td><%= price_by_weight.start_range %> kg</td>
+          <td><%= price_by_weight.end_range %> kg</td>
+          <td> <%= number_to_currency(price_by_weight.price_for_kg, unit: "R$", separator: ",")%> </td>
+          <% if current_user.admin? %>
+            <td> <%= link_to 'Editar', edit_price_by_weight_path(price_by_weight) %> </td>
+          <% end %>
         </tr>
         <% end %>
       </tbody>
@@ -135,7 +138,7 @@
   <% end %>
 </div>
 
-<h3>Prazo Estimado</h3>
+<h3>Prazo Estimado de Entrega por Distância</h3>
 
 
 <% if !flash[:delivery_time_table_errors].nil? %>
@@ -187,6 +190,9 @@
           <td><%= delivery_time_row.start_range %> km</td>
           <td><%= delivery_time_row.end_range %> km</td>
           <td><%= delivery_time_row.delivery_time %> h </td>
+          <% if current_user.admin? %>
+            <td> <%= link_to 'Editar', edit_delivery_time_table_path(delivery_time_row) %> </td>
+          <% end %>
         </tr>
         <% end %>
       </tbody>

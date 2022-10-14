@@ -8,6 +8,6 @@ Rails.application.routes.draw do
     get 'search', on: :collection
   end
   resources :price_by_distances, only: %i[new create edit update destroy]
-  resources :price_by_weights, only: %i[new create]
-  resources :delivery_time_table, only: %i[new create]
+  resources :price_by_weights, only: %i[new create edit update]
+  resources :delivery_time_table, only: %i[new create edit update]
 end

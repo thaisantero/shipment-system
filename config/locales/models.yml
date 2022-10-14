@@ -13,6 +13,8 @@ pt-BR:
       vehicle: 
         one: 'Veículo'
         other: 'Veículos'
+      price_by_weight: 'Preço por Peso'
+      delivery_time_table: 'Prazo Estimado de Entrega por Distância'
     attributes:
       transport_model:
         name: 'Nome'

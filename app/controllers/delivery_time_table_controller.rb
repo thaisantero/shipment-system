@@ -8,16 +8,28 @@ class DeliveryTimeTableController < ApplicationController
   def create
     @delivery_time_table = DeliveryTimeTable.new(delivery_time_table_params)
     if @delivery_time_table.save
-      flash[:notice] = 'Prazo Estimado de Esntrega cadastrado com sucesso.'
+      flash[:notice] = 'Prazo Estimado de Entrega por Distância cadastrado com sucesso.'
       redirect_to transport_model_path(@delivery_time_table.transport_model_id)
     else
-      flash[:notice] = 'Prazo Estimado de Entrega não cadastrado.'
+      flash[:notice] = 'Prazo Estimado de Entrega por Distância não cadastrado.'
       redirect_to transport_model_path(delivery_time_table_params[:transport_model_id]), flash: {delivery_time_table_errors: @delivery_time_table.errors.full_messages}
     end
   end
 
   def edit
     @delivery_time_table = DeliveryTimeTable.find(params[:id])
+  end
+
+  def update
+    @delivery_time_table = DeliveryTimeTable.find(params[:id])
+
+    if @delivery_time_table.update(delivery_time_table_params)
+      flash[:notice] = 'Prazo Estimado de Entrega por Distância atualizado com sucesso.'
+      redirect_to transport_model_path(@delivery_time_table.transport_model)
+    else
+      flash[:notice] = 'Prazo Estimado de Entrega por Distância não atualizado.'
+      render 'edit'
+    end
   end
 
   private

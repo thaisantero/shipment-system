@@ -24,7 +24,7 @@ class PriceByDistancesController < ApplicationController
     @price_by_distance = PriceByDistance.find(params[:id])
 
     if @price_by_distance.update(price_by_distance_params)
-      flash[:notice] = 'Taxa por Distância atualizado com sucesso.'
+      flash[:notice] = 'Taxa por Distância atualizada com sucesso.'
       redirect_to transport_model_path(@price_by_distance.transport_model)
     else
       flash.now[:notice] = 'Taxa por Distância não atualizada.'

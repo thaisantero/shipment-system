@@ -1,0 +1,33 @@
+<h2>Editar <%= DeliveryTimeTable.model_name.human %> </h2>
+
+<% if @delivery_time_table.errors.any? %>
+  <p> Verifique os erros abaixo: </p>
+  <ul>
+    <% @delivery_time_table.errors.full_messages.each do | msg |%>
+      <li> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="delivery_time_table" id="form">
+  <% if current_user.admin? %>
+      <%= form_with(model: @delivery_time_table) do | dt |%>
+      <%= dt.hidden_field :transport_model_id, value: @delivery_time_table.transport_model_id, readonly: true %>
+      <div>
+        <%= dt.label :start_range %>
+        <%= dt.number_field :start_range, required: true %>
+      </div>
+      <div>
+        <%= dt.label :end_range %>
+        <%= dt.number_field :end_range, required: true %>
+      </div>
+      <div>
+        <%= dt.label :delivery_time %>
+        <%= dt.number_field :delivery_time, required: true %>
+      </div>
+      <div>
+        <%= dt.submit "Cadastrar #{DeliveryTimeTable.model_name.human}"%>
+      </div>
+    <% end %>
+  <% end %>
+</div>
