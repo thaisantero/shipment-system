@@ -14,8 +14,7 @@ class PriceByDistance < ApplicationRecord
     return if past_end_range == start_range
 
     errors.add(:start_range,
-               'não pode ser diferente do valor da distância máxima do intervalo anterior
-               ou menor que distância mínima da modalide de transporte')
+    'não pode ser diferente do valor da distância máxima do intervalo anterior ou menor que distância mínima da modalide de transporte')
   end
 
   def start_range_inside_range

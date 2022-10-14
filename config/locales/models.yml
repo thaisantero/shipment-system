@@ -40,8 +40,8 @@ pt-BR:
         transport_model_id: 'Modelo de Transporte'
         transport_model: 'Modelo de Transporte'
       price_by_weight:
-        start_range: 'Distância Mínima'
-        end_range: 'Distância Máxima'
+        start_range: 'Peso Mínimo'
+        end_range: 'Peso Máximo'
         price_for_kg: 'Preço por Peso'
         transport_model_id: 'Modelo de Transporte'
         transport_model: 'Modelo de Transporte'
