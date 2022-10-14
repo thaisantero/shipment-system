@@ -1,0 +1,34 @@
+<h2> <%=ServiceOrder.model_name.human%></h2>
+
+
+<% if @service_orders.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= ServiceOrder.human_attribute_name(:pickup_address)%></th>
+        <th> Dimensões do Produto<br>(C x L x A)<br></th>
+        <th><%= Product.human_attribute_name(:weight)%></th>
+        <th><%= Customer.human_attribute_name(:customer_address)%></th>
+        <th> Cliente (CPF) </th>
+        <th><%= ServiceOrder.human_attribute_name(:delivery_distance)%></th>
+        <th><%= ServiceOrder.human_attribute_name(:service_order_status)%></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @service_orders.each do | service_order | %>
+      <tr>
+        <td> <%= service_order.pickup_address %><br>(<%= cep_formatted(service_order.pickup_cep) %>)<br></td>
+        <td> <%= service_order.product.length%>cm x <%= service_order.product.width%>cm x <%= service_order.product.height%>cm</td>
+        <td> <%= number_with_precision(service_order.product.weight, precision: 2, separator: ',') %> kg</td>
+        <td> <%= service_order.customer.customer_address %><br>(<%= cep_formatted(service_order.customer.customer_cep) %>)<br></td>
+        <td> <%= service_order.customer.customer_name %><br>(<%= formatted_cpf(service_order.customer.customer_registration_number) %>)<br></td>
+        <td> <%= number_with_precision(service_order.delivery_distance, precision: 1, separator: ',') %> km</td>
+        <td> <%= I18n.t(service_order.service_order_status) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <p>Nao existem modelos de transporte cadastrados.</p>
+<% end %>
