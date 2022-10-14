@@ -128,6 +128,7 @@
           <td> <%= number_to_currency(price_by_weight.price_for_kg, unit: "R$", separator: ",")%> </td>
           <% if current_user.admin? %>
             <td> <%= link_to 'Editar', edit_price_by_weight_path(price_by_weight) %> </td>
+            <td> <%= button_to 'Remover', price_by_weight_path(price_by_weight), method: :delete %> </td>
           <% end %>
         </tr>
         <% end %>
@@ -192,6 +193,7 @@
           <td><%= delivery_time_row.delivery_time %> h </td>
           <% if current_user.admin? %>
             <td> <%= link_to 'Editar', edit_delivery_time_table_path(delivery_time_row) %> </td>
+            <td> <%= button_to 'Remover', delivery_time_table_path(delivery_time_row), method: :delete %> </td>
           <% end %>
         </tr>
         <% end %>

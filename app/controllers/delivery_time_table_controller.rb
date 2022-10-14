@@ -32,6 +32,13 @@ class DeliveryTimeTableController < ApplicationController
     end
   end
 
+  def destroy
+    @delivery_time_table = DeliveryTimeTable.find(params[:id])
+    @delivery_time_table.destroy
+    flash[:notice] = 'Prazo Estimado de Entrega por Distância removido com sucesso.'
+    redirect_to transport_model_path(@delivery_time_table.transport_model)
+  end
+
   private
 
   def delivery_time_table_params

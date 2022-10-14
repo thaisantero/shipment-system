@@ -32,6 +32,12 @@ class PriceByWeightsController < ApplicationController
     end
   end
 
+  def destroy
+    @price_by_weight = PriceByWeight.find(params[:id])
+    @price_by_weight.destroy
+    flash[:notice] = 'Preço por Peso removido com sucesso.'
+    redirect_to transport_model_path(@price_by_weight.transport_model)
+  end
 
   private
 
