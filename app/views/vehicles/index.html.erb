@@ -20,25 +20,23 @@
       </tr>
     </thead>
     <tbody>
-      <% @vehicles.each do | vehicles_in_same_status | %>
-        <% vehicles_in_same_status.each do | v | %>
-          <tr>
-            <td><%= v.identification_plate %> </td>
-            <td><%= v.vehicle_brand %> </td>
-            <td><%= v.vehicle_type %> </td>
-            <td><%= v.fabrication_year %> </td>
-            <td><%= v.max_load_capacity %>kg</td>
-            <td><%= v.transport_model.name %> </td>
-            <td><%= I18n.t(v.status) %> </td>
-            <% if current_user.admin? %>
-              <% array_status = changeable_status(v.status) %>
-              <% array_status.each do | status | %>
-                <td> <%= button_to I18n.t(status), vehicle_path(v.id, vehicle: {status:status}), method: :patch%> </td>
-              <% end %>
-              <td> <%= link_to 'Editar', edit_vehicle_path(v.id)%> </td>
+      <% @vehicles.each do | vehicle | %>
+        <tr>
+          <td><%= vehicle.identification_plate %> </td>
+          <td><%= vehicle.vehicle_brand %> </td>
+          <td><%= vehicle.vehicle_type %> </td>
+          <td><%= vehicle.fabrication_year %> </td>
+          <td><%= vehicle.max_load_capacity %>kg</td>
+          <td><%= vehicle.transport_model.name %> </td>
+          <td><%= I18n.t(vehicle.status) %> </td>
+          <% if current_user.admin? %>
+            <% array_status = changeable_status(vehicle.status) %>
+            <% array_status.each do | status | %>
+              <td> <%= button_to I18n.t(status), vehicle_path(vehicle.id, vehicle: {status:status}), method: :patch%> </td>
             <% end %>
-          </tr>
-        <% end %>
+            <td> <%= link_to 'Editar', edit_vehicle_path(vehicle.id)%> </td>
+          <% end %>
+        </tr>
       <% end %>
     </tbody>
   </table>
