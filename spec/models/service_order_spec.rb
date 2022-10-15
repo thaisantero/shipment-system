@@ -78,5 +78,23 @@ RSpec.describe ServiceOrder, type: :model do
 
       expect(service_order).not_to be_valid
     end
+
+    it 'delivery_description obrigatório quando entrega atrasada' do
+      customer = Customer.create!(customer_address: 'Rua Padre Filó, 24', customer_cep: '60500344',
+                                  customer_name: 'Ana Paula Silva Oliveira', customer_registration_number: '00355611224')
+      service_order = ServiceOrder.new(pickup_address: 'Rua Baronesa, 10', pickup_cep: '60400454', customer: customer,
+                                       delivery_distance: 10, delivery_status: :with_delay)
+
+      expect(service_order).not_to be_valid
+    end
+
+    it 'delivery_description não é obrigatório quando entrega sem atraso' do
+      customer = Customer.create!(customer_address: 'Rua Padre Filó, 24', customer_cep: '60500344',
+                                  customer_name: 'Ana Paula Silva Oliveira', customer_registration_number: '00355611224')
+      service_order = ServiceOrder.new(pickup_address: 'Rua Baronesa, 10', pickup_cep: '60400454', customer: customer,
+                                       delivery_distance: 10, delivery_status: :on_time)
+
+      expect(service_order).to be_valid
+    end
   end
 end
