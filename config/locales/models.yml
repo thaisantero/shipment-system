@@ -8,6 +8,8 @@ pt-BR:
   pending: 'Pendente'
   processed: 'Em Entrega'
   delivered: 'Encerrada'
+  on_time: 'Sem Atraso'
+  with_delay: 'Com Atraso'
   activerecord:
     models:
       transport_model: 
@@ -65,21 +67,25 @@ pt-BR:
         pickup_cep: 'CEP de Retirada'
         delivery_distance: 'Distância de Entrega'
         service_order_status: 'Status'
-        transport_model_id: 'Modelo de Tranporte'
-        estimated_delivery_time: 'Prazo de Entrega Estimado'
+        transport_model_id: 'Modalidade de Transporte'
+        transport_model: 'Modalidade de Transporte'
+        estimated_delivery_date: 'Data Estimada para Entrega'
         delivery_price: 'Valor do Frete'
         customer_id: 'Cliente'
         delivery_status: 'Status da Entrega'
         delivery_description: 'Descrição da Entrega'
+        vehicle: 'Veículo Alocado'
+        delivery_date: 'Data de Entrega'
       product:
         length: 'Comprimento do Produto'
         width: 'Largura do Produto'
         height: 'Altura do Produto'
         weight: 'Peso do Produto'
-        service_order_id: 'Ordemd e Serviço'
+        service_order_id: 'Ordem de Serviço'
       customer:
         customer_address: 'Endereço de Entrega'
         customer_cep: 'CEP da Entrega'
         customer_name: 'Nome do Cliente'
         customer_registration_number: 'CPF do Cliente'
+        customer_cpf: 'CPF do Cliente'
 

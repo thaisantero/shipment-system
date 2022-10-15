@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_14_121624) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_15_172809) do
   create_table "customers", force: :cascade do |t|
     t.string "customer_address"
     t.string "customer_cep"
@@ -69,7 +69,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_14_121624) do
     t.integer "customer_id", null: false
     t.integer "service_order_status", default: 0
     t.integer "transport_model_id"
-    t.integer "estimated_delivery_time"
     t.decimal "delivery_price"
     t.integer "vehicle_id"
     t.datetime "delivery_date"
@@ -77,6 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_14_121624) do
     t.string "delivery_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "estimated_delivery_date"
     t.index ["customer_id"], name: "index_service_orders_on_customer_id"
     t.index ["transport_model_id"], name: "index_service_orders_on_transport_model_id"
     t.index ["vehicle_id"], name: "index_service_orders_on_vehicle_id"
