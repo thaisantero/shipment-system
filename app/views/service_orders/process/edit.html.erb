@@ -1,0 +1,28 @@
+<% if @available_transport_models.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th> Modalidades de Transporte Disponíveis </th>
+        <th> Preço da Modalidade </th>
+        <th> Prazo Estimado para Entrega </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @available_transport_models.each do | transport_model | %>
+      <tr>
+        <td> <%= transport_model.name %></td>
+        <td> <%= number_to_currency(transport_model.shipping_price(@service_order.product.weight, @service_order.delivery_distance), unit: "R$", separator: ",") %></td>
+        <td> <%= transport_model.delivery_time(@service_order.delivery_distance)%> h</td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+
+<%= form_for(@service_order, url: service_orders_process_index_path(id: @service_order.id), method: :post) do |f| %>
+  <%= f.collection_radio_buttons :transport_model_id, @available_transport_models, :id, :name %>
+  <div class="actions">
+    <%= f.submit 'Alocar' %>
+  </div>
+<% end %>

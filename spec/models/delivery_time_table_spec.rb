@@ -308,21 +308,21 @@ RSpec.describe DeliveryTimeTable, type: :model do
               start_range: 50, end_range: 60,
               delivery_time: 5, transport_model:
             )
-            _price_by_distance_second = DeliveryTimeTable.create!(
+            _delivery_time_index__second = DeliveryTimeTable.create!(
               start_range: 60, end_range: 70,
               delivery_time: 5, transport_model:
             )
-            _price_by_distance_third = DeliveryTimeTable.create!(
+            _delivery_time_index__third = DeliveryTimeTable.create!(
               start_range: 70, end_range: 80,
               delivery_time: 5, transport_model:
             )
             DeliveryTimeTable.find(2).destroy
-            price_by_distance_forth = DeliveryTimeTable.new(
+            delivery_time_index_forth = DeliveryTimeTable.new(
               start_range: 60, end_range: 80,
               delivery_time: 5, transport_model:
             )
 
-            expect(price_by_distance_forth).not_to be_valid
+            expect(delivery_time_index_forth).not_to be_valid
           end
         end
 
