@@ -40,7 +40,7 @@ describe 'Usuário cadastra modelo de transporte' do
     expect(page).to have_content('Dimensões do Produto(C x L x A)')
     expect(page).to have_content('Peso do Produto')
     expect(page).to have_content('Endereço de Entrega')
-    expect(page).to have_content('Cliente (CPF)')
+    expect(page).to have_content('Cliente(CPF)')
     expect(page).to have_content('Distância de Entrega')
     expect(page).to have_content('ASDFGB456FGT7A7')
     expect(page).to have_content('Rua Baronesa, 10(60400-455)')
@@ -52,7 +52,6 @@ describe 'Usuário cadastra modelo de transporte' do
   end
 
   it 'com dados incompletos' do
-
     user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
     allow(SecureRandom).to receive(:alphanumeric).and_return('ASDFGB456FGT7A7')
 
@@ -85,6 +84,5 @@ describe 'Usuário cadastra modelo de transporte' do
     expect(page).to have_content('Nome do Cliente não pode ficar em branco')
     expect(page).to have_content('CPF do Cliente não pode ficar em branco')
     expect(page).to have_content('Comprimento do Produto não pode ficar em branco')
-
   end
 end

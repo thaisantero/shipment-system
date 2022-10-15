@@ -4,20 +4,27 @@
   <% if current_user.admin? %>
     <%= link_to 'Cadastrar nova ordem de serviço', new_service_order_path %>
   <% end %>
+  <% if current_user.regular_user? %>
+    <%= link_to 'Pendentes', service_orders_process_index_path %> |
+    <%= link_to 'Processadas', service_orders_deliver_index_path %>
+  <% end %>
 </nav>
 
 <% if @service_orders.any? %>
   <table>
     <thead>
       <tr>
-        <th><%= ServiceOrder.human_attribute_name(:code)%></th>
-        <th><%= ServiceOrder.human_attribute_name(:pickup_address)%></th>
+        <th><%= ServiceOrder.human_attribute_name(:code)%> </th>
+        <th><%= ServiceOrder.human_attribute_name(:pickup_address)%><br>(CEP)<br></th>
         <th> Dimensões do Produto<br>(C x L x A)<br></th>
         <th><%= Product.human_attribute_name(:weight)%></th>
         <th><%= Customer.human_attribute_name(:customer_address)%></th>
-        <th> Cliente (CPF) </th>
+        <th> Cliente<br>(CPF)<br></th>
         <th><%= ServiceOrder.human_attribute_name(:delivery_distance)%></th>
         <th><%= ServiceOrder.human_attribute_name(:service_order_status)%></th>
+        <% if current_user.regular_user? %>
+          <th>Ações</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -31,11 +38,16 @@
         <td> <%= service_order.customer.customer_name %><br>(<%= formatted_cpf(service_order.customer.customer_registration_number) %>)<br></td>
         <td> <%= number_with_precision(service_order.delivery_distance, precision: 1, separator: ',') %> km</td>
         <td> <%= I18n.t(service_order.service_order_status) %></td>
+        <% if current_user.regular_user? %>
+          <% if service_order.pending?%>
+            <%# <td> <%= link_to 'Alocar Modalidade de Transporte', service_order_process_index_path(service_order.id) %> <td></td>
+          <% end %>
+        <% end %>
       </tr>
       <% end %>
     </tbody>
   </table>
 
 <% else %>
-  <p>Nao existem modelos de transporte cadastrados.</p>
+  <p>Nao existem ordens de serviço cadastradas.</p>
 <% end %>
