@@ -1,0 +1,39 @@
+<h2> <%= ServiceOrder.model_name.human %>: <%= @service_order.code %></h2>
+
+<div>
+  <dl>
+    <dt> <%= ServiceOrder.human_attribute_name(:pickup_address) %>:</dt>
+    <dd> <%= @service_order.pickup_address %></dd>
+    <dt> <%= ServiceOrder.human_attribute_name(:pickup_cep) %>:</dt>
+    <dd> <%= cep_formatted(@service_order.pickup_cep) %></dd>
+    <dt> Dimensões do Produto (C x L x A):</dt>
+    <dd> <%= @service_order.product.length%>cm x <%= @service_order.product.width%>cm x <%= @service_order.product.height%>cm</dd>
+    <dt> <%= Product.human_attribute_name(:weight) %>:</dt>
+    <dd> <%= number_with_precision(@service_order.product.weight, precision: 2, separator: ',') %>kg</dd>
+    <dt> <%= Customer.human_attribute_name(:customer_address) %>:</dt>
+    <dd> <%= @service_order.customer.customer_address %></dd>
+    <dt> <%= Customer.human_attribute_name(:customer_cep) %>:</dt>
+    <dd> <%= cep_formatted(@service_order.customer.customer_cep) %></dd>
+    <dt> <%= Customer.human_attribute_name(:customer_name) %>:</dt>
+    <dd> <%= @service_order.customer.customer_name %></dd>
+    <dt> <%= Customer.human_attribute_name(:customer_cpf) %>:</dt>
+    <dd> <%= formatted_cpf(@service_order.customer.customer_registration_number) %></dd>
+    <dt> <%= ServiceOrder.human_attribute_name(:delivery_distance) %>:</dt>
+    <dd> <%= number_with_precision(@service_order.delivery_distance, precision: 1, separator: ',') %> km</dd>
+    <dt> <%= ServiceOrder.human_attribute_name(:service_order_status) %>:</dt>
+    <dd> <%= I18n.t(@service_order.service_order_status) %></dd>
+    <dt> <%= ServiceOrder.human_attribute_name(:transport_model) %>:</dt>
+    <dd> <%= @service_order.transport_model.name %></dd>
+    <dt> <%= ServiceOrder.human_attribute_name(:estimated_delivery_date) %>:</dt>
+    <dd> <%= @service_order.estimated_delivery_date.strftime('%d/%m/%Y %H h') %></dd>
+    <dt> <%= ServiceOrder.human_attribute_name(:vehicle) %>:</dt>
+    <dd> <%= @service_order.vehicle.identification_plate %></dd>
+    <dt> <%= ServiceOrder.human_attribute_name(:delivery_date) %>:</dt>
+    <dd> <%= @service_order.delivery_date&.strftime('%d/%m/%Y %H h') %></dd>
+    <dt> <%= ServiceOrder.human_attribute_name(:delivery_status) %>:</dt>
+    <dd> <%= I18n.t(@service_order.delivery_status) %></dd>
+    <dt> <%= ServiceOrder.human_attribute_name(:delivery_description) %>:</dt>
+    <dd> <%= @service_order.delivery_description %></dd>
+
+  </dl>
+</div>

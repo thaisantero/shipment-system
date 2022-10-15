@@ -21,15 +21,18 @@ class ServiceOrdersController < ApplicationController
     end
   end
 
+  def show
+    @service_order = ServiceOrder.find(params[:id])
+  end
+
   private
 
   def service_order_params
     params.require(:service_order).permit(
       :pickup_address, :pickup_cep,
       :delivery_distance,
-      product_attributes: [:length, :width, :height, :weight],
-      customer_attributes: [:customer_address, :customer_cep, :customer_name,
-      :customer_registration_number]
+      product_attributes: %i[length width height weight],
+      customer_attributes: %i[customer_address customer_cep customer_name customer_registration_number]
     )
   end
 end
