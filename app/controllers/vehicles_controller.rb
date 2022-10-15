@@ -1,11 +1,9 @@
 class VehiclesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_vehicle, only: %i[edit update]
 
   def index
-    vehicles_active = Vehicle.all.select{ | v | v[:status] == "active" }
-    vehicles_maintenance = Vehicle.all.select{ | v | v[:status] == "maintenance" }
-    vehicles_waiting = Vehicle.all.select{ | v | v[:status] == "waiting" }
-    @vehicles = [vehicles_active, vehicles_maintenance, vehicles_waiting]
+    @vehicles = Vehicle.all.in_order_of(:status, [5, 0, 10])
   end
 
   def search
@@ -23,11 +21,6 @@ class VehiclesController < ApplicationController
   end
 
   def create
-    vehicle_params = params.require(:vehicle).permit(
-      :identification_plate, :vehicle_brand, :vehicle_type,
-      :fabrication_year, :max_load_capacity, :transport_model_id, :status
-    )
-
     @vehicle = Vehicle.new(vehicle_params)
     if @vehicle.save
       redirect_to vehicles_path, notice: 'Veículo cadastrado com sucesso.'
@@ -39,13 +32,7 @@ class VehiclesController < ApplicationController
   end
 
   def update
-    vehicle_params = params.require(:vehicle).permit(
-      :identification_plate, :vehicle_brand, :vehicle_type,
-      :fabrication_year, :max_load_capacity, :transport_model_id, :status
-    )
-    @vehicle = Vehicle.find(params[:id])
     if @vehicle.update(vehicle_params)
-      @vehicle.update(vehicle_params)
       redirect_to vehicles_path, notice: 'Veículo atualizado com sucesso.'
     else
       flash.now[:notice] = 'Não foi possível atualizar veículo.'
@@ -55,7 +42,19 @@ class VehiclesController < ApplicationController
   end
 
   def edit
-    @vehicle = Vehicle.find(params[:id])
     @transport_models = TransportModel.all
+  end
+
+  private
+
+  def set_vehicle
+    @vehicle = Vehicle.find(params[:id])
+  end
+
+  def vehicle_params
+    params.require(:vehicle).permit(
+      :identification_plate, :vehicle_brand, :vehicle_type,
+      :fabrication_year, :max_load_capacity, :transport_model_id, :status
+    )
   end
 end
