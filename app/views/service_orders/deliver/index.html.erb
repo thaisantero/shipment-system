@@ -1,0 +1,43 @@
+<h2> <%=ServiceOrder.model_name.human%></h2>
+
+<% if @service_orders.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= ServiceOrder.human_attribute_name(:code)%> </th>
+        <th><%= Customer.human_attribute_name(:customer_address)%></th>
+        <th><%= ServiceOrder.human_attribute_name(:delivery_distance)%></th>
+        <th><%= ServiceOrder.human_attribute_name(:service_order_status)%></th>
+        <th><%= ServiceOrder.human_attribute_name(:transport_model)%></th>
+        <th><%= ServiceOrder.human_attribute_name(:estimated_delivery_date)%></th>
+        <th><%= ServiceOrder.human_attribute_name(:vehicle)%></th>
+        <% if current_user.regular_user? %>
+          <th>Ações</th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @service_orders.each do | service_order | %>
+      <tr>
+        <td> <%= service_order.code %></td>
+        <td> <%= service_order.customer.customer_address %><br>(<%= cep_formatted(service_order.customer.customer_cep) %>)<br></td>
+        <td> <%= number_with_precision(service_order.delivery_distance, precision: 1, separator: ',') %> km</td>
+        <td> <%= I18n.t(service_order.service_order_status) %></td>
+        <td> <%= link_to service_order.transport_model.name, transport_model_path(service_order.transport_model) %> </td>
+        <td> <%= service_order.estimated_delivery_date.strftime("%d/%m/%Y") %> </td>
+        <td> <%= service_order.vehicle.identification_plate %> </td>
+        <% if current_user.regular_user? %>
+          <% if service_order.processed? %>
+            <td> <%= link_to 'Encerrar', edit_service_orders_deliver_path(service_order) %></td>
+          <% elsif service_order.pending? %>
+            <td> <%= link_to 'Alocar Modalidade de Transporte', edit_service_orders_process_path(service_order) %></td>
+          <% end %>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <p>Nao existem ordens de serviço cadastradas.</p>
+<% end %>
