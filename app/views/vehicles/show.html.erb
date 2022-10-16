@@ -1,0 +1,20 @@
+<h2> <%= Vehicle.model_name.human %>: <%=@vehicle.identification_plate%></h2>
+
+<div>
+  <dl>
+    <dt> <%= Vehicle.human_attribute_name(:identification_plate) %></dt>
+    <dd> <%= @vehicle.identification_plate %></dd>
+    <dt> <%= Vehicle.human_attribute_name(:vehicle_brand) %> </dt>
+    <dd> <%= @vehicle.vehicle_brand %></dd>
+    <dt> <%= Vehicle.human_attribute_name(:vehicle_type) %> </dt>
+    <dd> <%= @vehicle.vehicle_type %></dd>
+    <dt> <%= Vehicle.human_attribute_name(:fabrication_year) %> </dt>
+    <dd> <%= @vehicle.fabrication_year %></dd>
+    <dt> <%= Vehicle.human_attribute_name(:max_load_capacity) %> </dt>
+    <dd> <%= @vehicle.max_load_capacity %></dd>
+    <dt> <%= TransportModel.model_name.human %> </dt>
+    <dd> <%= @vehicle.transport_model.name  %></dd>
+    <dt> <%= Vehicle.human_attribute_name(:status) %> </dt>
+    <dd> <%= I18n.t(@vehicle.status) %></dd>
+  </dl>
+</div>

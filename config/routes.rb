@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :transport_models, only: %i[index new create show edit update show] do
     patch 'change_status', on: :member
   end
-  resources :vehicles, only: %i[index new create update edit] do
+  resources :vehicles, only: %i[index new create update edit show] do
     get 'search', on: :collection
   end
   resources :price_by_distances, only: %i[new create edit update destroy]

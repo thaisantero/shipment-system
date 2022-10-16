@@ -2,7 +2,7 @@
 
 class VehiclesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_vehicle, only: %i[edit update]
+  before_action :set_vehicle, only: %i[edit update show]
 
   def index
     @vehicles = Vehicle.all.in_order_of(:status, [5, 0, 10])
@@ -37,6 +37,8 @@ class VehiclesController < ApplicationController
   def edit
     @transport_models = TransportModel.all
   end
+
+  def show; end
 
   def search
     @query = params[:query]
