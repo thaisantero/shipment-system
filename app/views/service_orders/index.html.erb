@@ -10,6 +10,12 @@
   <% end %>
 </nav>
 
+<%= form_with(url: service_orders_path, method: :get) do | f |%>
+  <%= f.label :query,  'Buscar Ordem de Serviço' %>
+  <%= f.text_field :query %>
+  <%= f.submit 'Buscar' %>
+<% end %>
+
 <% if @service_orders.any? %>
   <table>
     <thead>

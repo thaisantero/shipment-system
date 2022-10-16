@@ -4,7 +4,7 @@ class ServiceOrdersController < ApplicationController
   before_action :authenticate_user!, only: %i[index new create show]
 
   def index
-    @service_orders = ServiceOrder.all.sort_by(&:service_order_status)
+    @service_orders = ServiceOrder.search(params[:query]).sort_by(&:service_order_status)
   end
 
   def new

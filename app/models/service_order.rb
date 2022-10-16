@@ -16,6 +16,15 @@ class ServiceOrder < ApplicationRecord
   validates :pickup_cep, numericality: { only_integer: true }
   validates :delivery_description, presence: true, if: -> { with_delay? }
 
+  scope :search, ->(query) {
+    if query.present?
+      where(
+        'code LIKE :query OR service_order_status LIKE :query OR delivery_status LIKE :query', 
+        query: "%#{query}%"
+      )
+    end
+  }
+
   before_create :generate_code
 
   private
