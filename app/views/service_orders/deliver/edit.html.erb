@@ -10,11 +10,11 @@
 <% end %>
 
 <%= form_for(@service_order, url: service_orders_deliver_index_path(id: @service_order.id), method: :post) do |f| %>
-  <div>
+  <div class="mb-3">
     <%= f.label :delivery_description %>
     <%= f.text_field :delivery_description %>
   </div>
-  <div class="actions">
+  <div class="mb-3">
     <%= f.submit 'Encerrar' %>
   </div>
 <% end %>

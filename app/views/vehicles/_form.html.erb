@@ -1,30 +1,30 @@
 
 <%= form_with(model: @vehicle) do | v |%>
-  <div>
+  <div class="mb-3">
     <%= v.label :identification_plate %>
     <%= v.text_field :identification_plate%>
   </div>
-  <div>
+  <div class="mb-3">
     <%= v.label :vehicle_brand %>
     <%= v.text_field :vehicle_brand%>
   </div>
-  <div>
+  <div class="mb-3">
     <%= v.label :vehicle_type %>
     <%= v.text_field :vehicle_type%>
   </div>
-  <div>
+  <div class="mb-3">
     <%= v.label :fabrication_year %>
     <%= v.number_field :fabrication_year%>
   </div>
-  <div>
+  <div class="mb-3">
     <%= v.label :max_load_capacity %>
     <%= v.number_field :max_load_capacity%>
   </div>
-  <div>
+  <div class="mb-3">
     <%= v.label :transport_model_id %>
     <%= v.collection_select :transport_model_id, @transport_models, :id, :name %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= v.submit 'Cadastrar'%>
   </div>
 <% end %>

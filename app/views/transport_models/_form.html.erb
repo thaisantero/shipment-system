@@ -1,30 +1,30 @@
 
 <%= form_with(model: @transport_model) do | tm |%>
-  <div>
+  <div class="mb-3">
     <%= tm.label :name %>
     <%= tm.text_field :name%>
   </div>
-  <div>
+  <div class="mb-3">
     <%= tm.label :minimum_distance %>
     <%= tm.number_field :minimum_distance %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= tm.label :maximum_distance %>
     <%= tm.number_field :maximum_distance %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= tm.label :minimum_weight %>
     <%= tm.number_field :minimum_weight %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= tm.label :maximum_weight %>
     <%= tm.number_field :maximum_weight %>
   </div>
-  <div>
+  <div class="mb-3">
     <%= tm.label :fixed_rate %>
     <%= tm.number_field :fixed_rate %>
   </div> 
-  <div>
+  <div class="mb-3">
     <%= tm.submit 'Cadastrar'%>
   </div>
 <% end %>

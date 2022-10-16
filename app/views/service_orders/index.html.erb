@@ -17,7 +17,7 @@
 <% end %>
 
 <% if @service_orders.any? %>
-  <table>
+  <table class="table table-striped">
     <thead>
       <tr>
         <th><%= ServiceOrder.human_attribute_name(:code)%> </th>
@@ -25,6 +25,9 @@
         <th><%= Customer.human_attribute_name(:customer_address)%></th>
         <th><%= ServiceOrder.human_attribute_name(:delivery_distance)%></th>
         <th><%= ServiceOrder.human_attribute_name(:service_order_status)%></th>
+        <% if current_user.regular_user? %>
+          <th>Ações</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -35,6 +38,13 @@
         <td> <%= service_order.customer.customer_address %><br>(<%= cep_formatted(service_order.customer.customer_cep) %>)<br></td>
         <td> <%= number_with_precision(service_order.delivery_distance, precision: 2, separator: ',') %> km</td>
         <td> <%= I18n.t(service_order.service_order_status) %></td>
+        <% if current_user.regular_user? %>
+          <% if service_order.pending? %>
+            <td> <%= link_to 'Alocar Modalidade de Transporte', edit_service_orders_process_path(service_order) %></td>
+          <% elsif service_order.processed? %>
+            <td> <%= link_to 'Encerrar', edit_service_orders_deliver_path(service_order) %></td>
+          <% end %>
+        <% end %>
       </tr>
       <% end %>
     </tbody>

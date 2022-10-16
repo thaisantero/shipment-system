@@ -1,7 +1,7 @@
 <h2> <%=ServiceOrder.model_name.human%></h2>
 
 <% if @service_orders.any? %>
-  <table>
+  <table class="table table-striped">
     <thead>
       <tr>
         <th><%= ServiceOrder.human_attribute_name(:code)%> </th>

@@ -28,20 +28,20 @@
   <% if current_user.admin? %>
     <%= form_with(model: @price_by_distance) do | pd |%>
       <%= pd.hidden_field :transport_model_id, value: @transport_model.id, readonly: true %>
-      <div>
+      <div class="mb-3">
         <%= pd.label :start_range %>
         <%= pd.number_field :start_range, required: true %>
       </div>
-      <div>
+      <div class="mb-3">
         <%= pd.label :end_range %>
         <%= pd.number_field :end_range, required: true %>
       </div>
-      <div>
+      <div class="mb-3">
         <%= pd.label :distance_tax%>
         <%= pd.number_field :distance_tax, step: 0.10, required: true %>
       </div>
-      <div>
-        <%= pd.submit 'Cadastrar Taxa por Distância'%>
+      <div class="mb-3">
+        <%= pd.submit 'Cadastrar Taxa por Distância', class:"btn btn-dark"%>
       </div>
     <% end %>
   <% end %>
@@ -49,7 +49,7 @@
 
 <div>
   <% if @price_by_distances.any? %>
-    <table>
+    <table class="table table-striped">
       <thead>
         <tr>
           <th> <%= PriceByDistance.human_attribute_name(:start_range)%></th>
@@ -65,7 +65,7 @@
           <td>  <%=  number_to_currency(price_by_distance.distance_tax, unit: "R$", separator: ",")%> </td>
           <% if current_user.admin? %>
             <td> <%= link_to 'Editar', edit_price_by_distance_path(price_by_distance) %> </td>
-            <td> <%= button_to 'Remover', price_by_distance_path(price_by_distance), method: :delete %> </td>
+            <td> <%= button_to 'Remover', price_by_distance_path(price_by_distance), method: :delete, class:"btn btn-dark" %> </td>
           <% end %>
         </tr>
         <% end %>
@@ -91,20 +91,20 @@
   <% if current_user.admin? %>
     <%= form_with(model: @price_by_weight) do | pw |%>
       <%= pw.hidden_field :transport_model_id, value: @transport_model.id, readonly: true %>
-      <div>
+      <div class="mb-3">
         <%= pw.label :start_range %>
         <%= pw.number_field :start_range%>
       </div>
-      <div>
+      <div class="mb-3">
         <%= pw.label :end_range %>
         <%= pw.number_field :end_range %>
       </div>
-      <div>
+      <div class="mb-3">
         <%= pw.label :price_for_kg%>
         <%= pw.number_field :price_for_kg, step: 0.10 %>
       </div>
-      <div>
-        <%= pw.submit 'Cadastrar Preço por Peso'%>
+      <div class="mb-3">
+        <%= pw.submit 'Cadastrar Preço por Peso', class:"btn btn-dark" %>
       </div>
     <% end %>
   <% end %>
@@ -112,7 +112,7 @@
 
 <div>
   <% if @price_by_weights.any? %>
-    <table>
+    <table class="table table-striped">
       <thead>
         <tr>
           <th> <%= PriceByWeight.human_attribute_name(:start_range)%></th>
@@ -128,7 +128,7 @@
           <td> <%= number_to_currency(price_by_weight.price_for_kg, unit: "R$", separator: ",")%> </td>
           <% if current_user.admin? %>
             <td> <%= link_to 'Editar', edit_price_by_weight_path(price_by_weight) %> </td>
-            <td> <%= button_to 'Remover', price_by_weight_path(price_by_weight), method: :delete %> </td>
+            <td> <%= button_to 'Remover', price_by_weight_path(price_by_weight), method: :delete, class:"btn btn-dark" %> </td>
           <% end %>
         </tr>
         <% end %>
@@ -156,20 +156,20 @@
   <% if current_user.admin? %>
     <%= form_with(model: @delivery_time_table, url: delivery_time_table_index_path) do | dt |%>
       <%= dt.hidden_field :transport_model_id, value: @transport_model.id, readonly: true %>
-      <div>
+      <div class="mb-3">
         <%= dt.label :start_range %>
         <%= dt.number_field :start_range%>
       </div>
-      <div>
+      <div class="mb-3">
         <%= dt.label :end_range %>
         <%= dt.number_field :end_range %>
       </div>
-      <div>
+      <div class="mb-3">
         <%= dt.label :delivery_time%>
         <%= dt.number_field :delivery_time %>
       </div>
-      <div>
-        <%= dt.submit "Cadastrar #{DeliveryTimeTable.human_attribute_name(:delivery_time)}"%>
+      <div class="mb-3">
+        <%= dt.submit "Cadastrar #{DeliveryTimeTable.human_attribute_name(:delivery_time)}", class:"btn btn-dark" %>
       </div>
     <% end %>
   <% end %>
@@ -177,7 +177,7 @@
 
 <div>
   <% if @delivery_times_table.any? %>
-    <table>
+    <table class="table table-striped">
       <thead>
         <tr>
           <th> <%= DeliveryTimeTable.human_attribute_name(:start_range)%></th>
@@ -193,7 +193,7 @@
           <td><%= delivery_time_row.delivery_time %> h </td>
           <% if current_user.admin? %>
             <td> <%= link_to 'Editar', edit_delivery_time_table_path(delivery_time_row) %> </td>
-            <td> <%= button_to 'Remover', delivery_time_table_path(delivery_time_row), method: :delete %> </td>
+            <td> <%= button_to 'Remover', delivery_time_table_path(delivery_time_row), method: :delete, class:"btn btn-dark" %> </td>
           <% end %>
         </tr>
         <% end %>

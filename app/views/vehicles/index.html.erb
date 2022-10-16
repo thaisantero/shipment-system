@@ -6,8 +6,8 @@
 </nav>
 
 <% if @vehicles.any? %>
-  <table>
-    <thead>
+  <table class="table table-striped">
+    <thead class="thead-dark">
       <tr>
         <th><%= Vehicle.human_attribute_name(:identification_plate)%></th>
         <th><%= Vehicle.human_attribute_name(:vehicle_brand)%></th>
@@ -16,13 +16,15 @@
         <th><%= Vehicle.human_attribute_name(:max_load_capacity)%></th>
         <th><%= TransportModel.model_name.human %></th>
         <th><%= Vehicle.human_attribute_name(:status)%></th>
-        <th> Ações </th>
+        <% if current_user.admin? %>
+          <th> Ações </th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
       <% @vehicles.each do | vehicle | %>
         <tr>
-          <td><%= vehicle.identification_plate %> </td>
+          <td><%= link_to vehicle.identification_plate, vehicle_path(vehicle) %> </td>
           <td><%= vehicle.vehicle_brand %> </td>
           <td><%= vehicle.vehicle_type %> </td>
           <td><%= vehicle.fabrication_year %> </td>
@@ -32,7 +34,7 @@
           <% if current_user.admin? %>
             <% array_status = changeable_status(vehicle.status) %>
             <% array_status.each do | status | %>
-              <td> <%= button_to I18n.t(status), vehicle_path(vehicle.id, vehicle: {status:status}), method: :patch%> </td>
+              <td> <%= button_to I18n.t(status), vehicle_path(vehicle.id, vehicle: {status:status}), method: :patch, class:"btn btn-dark" %> </td>
             <% end %>
             <td> <%= link_to 'Editar', edit_vehicle_path(vehicle.id)%> </td>
           <% end %>
