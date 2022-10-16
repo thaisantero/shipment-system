@@ -106,6 +106,39 @@ RSpec.describe TransportModel, type: :model do
         expect(transport_model).not_to be_valid
       end
     end
+
+    context 'name deve ser único' do
+      it 'é invalido' do
+        TransportModel.create(
+          name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
+          maximum_weight: 10_000, fixed_rate: 10, status: 'active'
+        )
+
+        transport_model = TransportModel.new(
+          name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
+          maximum_weight: 10_000, fixed_rate: 10, status: 'active'
+        )
+
+        expect(transport_model).not_to be_valid
+      end
+
+      it 'adiciona erro' do
+        TransportModel.create(
+          name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
+          maximum_weight: 10_000, fixed_rate: 10, status: 'active'
+        )
+
+        transport_model = TransportModel.new(
+          name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
+          maximum_weight: 10_000, fixed_rate: 10, status: 'active'
+        )
+        transport_model.validate
+
+        expect(
+          transport_model.errors[:name]
+        ).to include 'já está em uso'
+      end
+    end
   end
 
   describe '#tax_distance' do
