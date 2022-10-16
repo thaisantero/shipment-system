@@ -34,6 +34,7 @@
     <dd> <%= I18n.t(@service_order.delivery_status) %></dd>
     <dt> <%= ServiceOrder.human_attribute_name(:delivery_description) %>:</dt>
     <dd> <%= @service_order.delivery_description %></dd>
-
+    <dt> <%= ServiceOrder.human_attribute_name(:delivery_price) %>:</dt>
+    <dd> <%= number_to_currency(@service_order.delivery_price, unit: "R$", precision: 1, separator: ',') %></dd>
   </dl>
 </div>

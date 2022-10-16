@@ -20,7 +20,7 @@ module ServiceOrders
 
     def edit
       @service_order = ServiceOrder.find(params[:id])
-      @available_transport_models = TransportModel.by_distance(@service_order.delivery_distance).with_vehicles_available
+      @available_transport_models = TransportModel.by_distance(@service_order.delivery_distance).with_vehicles_available.active
     end
 
     private

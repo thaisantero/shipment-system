@@ -77,5 +77,6 @@ describe 'Usuário vê modalidades de transporte disponíveis para alocação' d
     expect(page).to have_content 'Modalidade de Transporte: Express'
     expect(page).to have_content "Data Estimada para Entrega: #{delivery_estimated_date.strftime('%d/%m/%Y %H h')}"
     expect(page).to have_content 'Veículo Alocado: PNG0000'
+    expect(page).to have_content 'Valor do Frete: R$26,0'
   end
 end

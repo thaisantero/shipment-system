@@ -43,7 +43,7 @@ describe 'Usuário vê tela de encerramento da ordem de serviço' do
     estimated_delivery_date = Time.zone.now - 5.days
     service_order = ServiceOrder.create!(pickup_address: 'Rua Baronesa, 10', pickup_cep: '60400455', customer: customer,
                                          delivery_distance: 55, transport_model:, vehicle:, estimated_delivery_date:, 
-                                         service_order_status: :processed)
+                                         service_order_status: :processed, delivery_price: 40)
     Product.create!(length: 100, width: 70, height: 80, weight: 12.4, service_order: service_order)
 
     login_as(user)
@@ -71,5 +71,6 @@ describe 'Usuário vê tela de encerramento da ordem de serviço' do
     expect(page).to have_content "Data de Entrega: #{Time.zone.now.strftime('%d/%m/%Y %H h')}"
     expect(page).to have_content 'Status da Entrega: Com Atraso'
     expect(page).to have_content 'Descrição da Entrega: Problema com o veículo de entrega'
+    expect(page).to have_content 'Valor do Frete: R$40,0'
   end
 end

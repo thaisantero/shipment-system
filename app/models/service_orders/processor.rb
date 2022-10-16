@@ -15,6 +15,7 @@ module ServiceOrders
       service_order.estimated_delivery_date = calculate_estimated_delivery_date
       service_order.vehicle = vehicle
       service_order.transport_model = transport_model
+      service_order.delivery_price = calculate_shipping_price
       service_order.processed!
       vehicle.active!
     end
@@ -28,6 +29,10 @@ module ServiceOrders
 
     def vehicle
       transport_model.vehicles.waiting.first
+    end
+
+    def calculate_shipping_price
+      transport_model.shipping_price(service_order.product.weight, service_order.delivery_distance)
     end
   end
 end
