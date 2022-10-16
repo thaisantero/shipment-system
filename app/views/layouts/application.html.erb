@@ -16,13 +16,6 @@
         <%= link_to 'Modelos de Transporte', transport_models_path %> |
         <%= link_to 'Veículos', vehicles_path %> |
         <%= link_to 'Ordens de Serviço', service_orders_path %> |
-        <% if current_page?(root_path) %>
-          <%= form_with(url: search_service_orders_path, method: :get) do | f |%>
-            <%= f.label :query,  'Insira Código de Rastreio' %>
-            <%= f.text_field :query %>
-            <%= f.submit 'Buscar' %>
-          <% end %>
-        <% end %> 
         <% if user_signed_in? %>
           <%= current_user.name%> | <%= current_user.email %> | <%= I18n.t(current_user.role) %> 
           <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
