@@ -19,7 +19,7 @@ class ServiceOrder < ApplicationRecord
   scope :search, ->(query) {
     if query.present?
       where(
-        'code LIKE :query OR service_order_status LIKE :query OR delivery_status LIKE :query', 
+        'code LIKE :query OR pickup_address LIKE :query OR pickup_cep LIKE :query',
         query: "%#{query}%"
       )
     end
