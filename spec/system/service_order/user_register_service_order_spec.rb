@@ -36,21 +36,17 @@ describe 'Usuário cadastra modelo de transporte' do
     fill_in 'Peso do Produto', with: 12.4
     click_on 'Cadastrar Ordem de Serviço'
 
-    expect(page).to have_content 'Ordem de Serviço cadastrada com sucesso.'
-    expect(page).to have_content('Código')
-    expect(page).to have_content('Endereço de Retirada')
-    expect(page).to have_content('Dimensões do Produto(C x L x A)')
-    expect(page).to have_content('Peso do Produto')
-    expect(page).to have_content('Endereço de Entrega')
-    expect(page).to have_content('Cliente(CPF)')
-    expect(page).to have_content('Distância de Entrega')
-    expect(page).to have_content('ASDFGB456FGT7A7')
-    expect(page).to have_content('Rua Baronesa, 10(60400-455)')
-    expect(page).to have_content('100cm x 70cm x 80cm')
-    expect(page).to have_content('12,40 kg')
-    expect(page).to have_content('Rua Padre Filó, 24(60500-344)')
-    expect(page).to have_content('Ana Paula Silva Oliveira(003.556.112-24)')
-    expect(page).to have_content('70,5 km')
+    expect(page).to have_content 'Ordem de Serviço: ASDFGB456FGT7A7'
+    expect(page).to have_content 'Endereço de Retirada: Rua Baronesa, 10'
+    expect(page).to have_content 'CEP de Retirada: 60400-455'
+    expect(page).to have_content 'Dimensões do Produto (C x L x A): 100cm x 70cm x 80cm'
+    expect(page).to have_content 'Peso do Produto: 12,40kg'
+    expect(page).to have_content 'Endereço de Entrega: Rua Padre Filó, 24'
+    expect(page).to have_content 'CEP da Entrega: 60500-344'
+    expect(page).to have_content 'Nome do Cliente: Ana Paula Silva Oliveira'
+    expect(page).to have_content 'CPF do Cliente: 003.556.112-24'
+    expect(page).to have_content 'Distância de Entrega: 70,50 km'
+    expect(page).to have_content 'Status: Pendente'
   end
 
   it 'com dados incompletos' do

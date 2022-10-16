@@ -16,33 +16,19 @@
       <tr>
         <th><%= ServiceOrder.human_attribute_name(:code)%> </th>
         <th><%= ServiceOrder.human_attribute_name(:pickup_address)%><br>(CEP)<br></th>
-        <th> Dimensões do Produto<br>(C x L x A)<br></th>
-        <th><%= Product.human_attribute_name(:weight)%></th>
         <th><%= Customer.human_attribute_name(:customer_address)%></th>
-        <th> Cliente<br>(CPF)<br></th>
         <th><%= ServiceOrder.human_attribute_name(:delivery_distance)%></th>
         <th><%= ServiceOrder.human_attribute_name(:service_order_status)%></th>
-        <% if current_user.regular_user? %>
-          <th>Ações</th>
-        <% end %>
       </tr>
     </thead>
     <tbody>
       <% @service_orders.each do | service_order | %>
       <tr>
-        <td> <%= service_order.code %></td>
+        <td> <%= link_to service_order.code, service_order %></td>
         <td> <%= service_order.pickup_address %><br>(<%= cep_formatted(service_order.pickup_cep) %>)<br></td>
-        <td> <%= service_order.product.length%>cm x <%= service_order.product.width%>cm x <%= service_order.product.height%>cm</td>
-        <td> <%= number_with_precision(service_order.product.weight, precision: 2, separator: ',') %> kg</td>
         <td> <%= service_order.customer.customer_address %><br>(<%= cep_formatted(service_order.customer.customer_cep) %>)<br></td>
-        <td> <%= service_order.customer.customer_name %><br>(<%= formatted_cpf(service_order.customer.customer_registration_number) %>)<br></td>
-        <td> <%= number_with_precision(service_order.delivery_distance, precision: 1, separator: ',') %> km</td>
+        <td> <%= number_with_precision(service_order.delivery_distance, precision: 2, separator: ',') %> km</td>
         <td> <%= I18n.t(service_order.service_order_status) %></td>
-        <% if current_user.regular_user? %>
-          <% if service_order.pending?%>
-            <%# <td> <%= link_to 'Alocar Modalidade de Transporte', service_order_process_index_path(service_order.id) %> <td></td>
-          <% end %>
-        <% end %>
       </tr>
       <% end %>
     </tbody>

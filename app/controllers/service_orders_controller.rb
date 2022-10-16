@@ -16,7 +16,7 @@ class ServiceOrdersController < ApplicationController
 
     if @service_order.save
       flash[:notice] = 'Ordem de Serviço cadastrada com sucesso.'
-      redirect_to service_orders_path
+      redirect_to service_order_path(@service_order)
     else
       flash.now[:notice] = 'Ordem de Serviço não cadastrada.'
       render 'new'
