@@ -7,3 +7,19 @@ https://excalidraw.com/#json=DdOGmgVFqHn75iQKISZNn,2Uwvx369cEgJvcfCe__9Cw
 
 Link do Trello com organização das tarefas está aqui:
 https://trello.com/b/XXovEVX4/sistema-de-frete-treinadev
+
+Para utilizar esta aplicação, é necessário realizar os seguintes comandos no terminal:
+```bash
+bundle install
+
+rails db:seed
+```
+Para acessa como administrador da aplicação use o seguinte e-mail e senha:
+
+E-mail: maria@sistemadefrete.com.br
+Senha: senha123
+
+Para acessa como usuário regular da aplicação use o seguinte e-mail e senha:
+
+E-mail: joao@sistemadefrete.com.br
+Senha: senha123
