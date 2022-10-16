@@ -22,6 +22,8 @@
     <dd> <%= number_with_precision(@service_order.delivery_distance, precision: 2, separator: ',') %> km</dd>
     <dt> <%= ServiceOrder.human_attribute_name(:service_order_status) %>:</dt>
     <dd> <%= I18n.t(@service_order.service_order_status) %></dd>
+    <dt> <%= ServiceOrder.human_attribute_name(:processed_date) %>:</dt>
+    <dd> <%= @service_order.processed_date&.strftime('%d/%m/%Y %H h') %></dd>
     <dt> <%= ServiceOrder.human_attribute_name(:transport_model) %>:</dt>
     <dd> <%= @service_order.transport_model&.name %></dd>
     <dt> <%= ServiceOrder.human_attribute_name(:estimated_delivery_date) %>:</dt>

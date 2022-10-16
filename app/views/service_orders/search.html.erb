@@ -10,6 +10,7 @@
         <th><%= Customer.human_attribute_name(:customer_address) %></th>
         <th><%= ServiceOrder.human_attribute_name(:service_order_status) %></th>
         <% if !@service_order.pending? %>
+          <th><%= ServiceOrder.human_attribute_name(:processed_date) %></th>
           <th><%= Vehicle.human_attribute_name(:identification_plate) %> do Veículo</th>
           <th><%= Vehicle.human_attribute_name(:vehicle_type) %> do Veículo</th>
           <% if @service_order.delivered? %>
@@ -29,6 +30,7 @@
         <td><%= @service_order.customer.customer_address %> </td>
         <td><%= I18n.t(@service_order.service_order_status) %> </td>
         <% if !@service_order.pending? %>
+          <td><%= @service_order.processed_date&.strftime('%d/%m/%Y %H h') %></td>
           <td><%= @service_order.vehicle.identification_plate %> </td>
           <td><%= @service_order.vehicle.vehicle_type %></td>
           <% if @service_order.delivered? %>
@@ -44,3 +46,4 @@
     </tbody>
   </table>
 <% end %>
+

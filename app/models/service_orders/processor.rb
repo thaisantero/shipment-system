@@ -15,6 +15,7 @@ module ServiceOrders
 
     def perform
       service_order.estimated_delivery_date = calculate_estimated_delivery_date
+      service_order.processed_date = Time.zone.now
       service_order.vehicle = vehicle
       service_order.transport_model = transport_model
       service_order.delivery_price = calculate_shipping_price

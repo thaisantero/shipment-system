@@ -16,8 +16,10 @@ describe 'Usuário vê ordens de serviço processadas' do
                               fabrication_year: 2016, max_load_capacity: 10_000, transport_model:,
                               status: 'waiting')
     estimated_delivery_date = Time.zone.now + 5.days
+    processed_date = Time.zone.now
     service_order = ServiceOrder.create(pickup_address: 'Rua Baronesa, 10', pickup_cep: '60400455', customer:,
-                                         delivery_distance: 70.5, transport_model:, vehicle:, estimated_delivery_date:, service_order_status: :processed)
+                                        delivery_distance: 70.5, transport_model:, vehicle:, estimated_delivery_date:, service_order_status: :processed,
+                                        processed_date:)
     Product.create(length: 100, width: 70, height: 80, weight: 12.4, service_order:)
 
     login_as(user)
@@ -31,12 +33,14 @@ describe 'Usuário vê ordens de serviço processadas' do
     expect(page).to have_content('Distância de Entrega')
     expect(page).to have_content('Modalidade de Transporte')
     expect(page).to have_content('Veículo Alocado')
+    expect(page).to have_content('Data de Processamento')
     expect(page).to have_content('Data Estimada para Entrega')
     expect(page).to have_content('ASDFGB456FGT7A7')
     expect(page).to have_content('Rua Padre Filó, 24(60500-344)')
     expect(page).to have_content('70,5 km')
     expect(page).to have_content('Express')
     expect(page).to have_content('PNG0000')
-    expect(page).to have_content estimated_delivery_date.strftime('%d/%m/%Y')
+    expect(page).to have_content Time.zone.now.strftime('%d/%m/%Y %H h')
+    expect(page).to have_content estimated_delivery_date.strftime('%d/%m/%Y %H h')
   end
 end

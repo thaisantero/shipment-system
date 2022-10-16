@@ -76,6 +76,7 @@ pt-BR:
         delivery_description: 'Descrição da Entrega'
         vehicle: 'Veículo Alocado'
         delivery_date: 'Data de Entrega'
+        processed_date: 'Data de Processamento'
       product:
         length: 'Comprimento do Produto'
         width: 'Largura do Produto'

@@ -9,6 +9,7 @@
         <th><%= ServiceOrder.human_attribute_name(:delivery_distance)%></th>
         <th><%= ServiceOrder.human_attribute_name(:service_order_status)%></th>
         <th><%= ServiceOrder.human_attribute_name(:transport_model)%></th>
+        <th><%= ServiceOrder.human_attribute_name(:processed_date)%></th>
         <th><%= ServiceOrder.human_attribute_name(:estimated_delivery_date)%></th>
         <th><%= ServiceOrder.human_attribute_name(:delivery_price)%></th>
         <th><%= ServiceOrder.human_attribute_name(:vehicle)%></th>
@@ -25,7 +26,8 @@
         <td> <%= number_with_precision(service_order.delivery_distance, precision: 1, separator: ',') %> km</td>
         <td> <%= I18n.t(service_order.service_order_status) %></td>
         <td> <%= link_to service_order.transport_model.name, transport_model_path(service_order.transport_model) %> </td>
-        <td> <%= service_order.estimated_delivery_date.strftime("%d/%m/%Y") %> </td>
+        <td> <%= service_order.processed_date&.strftime("%d/%m/%Y %H h") %> </td>
+        <td> <%= service_order.estimated_delivery_date.strftime("%d/%m/%Y %H h") %> </td>
         <td> <%= number_to_currency(service_order.delivery_price, unit: 'R$', precision: 1, separator: ',') %> </td>
         <td> <%= service_order.vehicle.identification_plate %> </td>
         <% if current_user.regular_user? %>
