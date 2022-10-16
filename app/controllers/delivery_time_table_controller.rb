@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DeliveryTimeTableController < ApplicationController
   before_action :authenticate_user!
 
@@ -12,7 +14,8 @@ class DeliveryTimeTableController < ApplicationController
       redirect_to transport_model_path(@delivery_time_table.transport_model_id)
     else
       flash[:notice] = 'Prazo Estimado de Entrega por Distância não cadastrado.'
-      redirect_to transport_model_path(delivery_time_table_params[:transport_model_id]), flash: {delivery_time_table_errors: @delivery_time_table.errors.full_messages}
+      redirect_to transport_model_path(delivery_time_table_params[:transport_model_id]),
+                  flash: { delivery_time_table_errors: @delivery_time_table.errors.full_messages }
     end
   end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ServiceOrders
   class DeliverController < ApplicationController
     before_action :authenticate_user!
@@ -18,8 +20,8 @@ module ServiceOrders
         flash[:notice] = 'Ordem de Serviço encerrada com sucesso.'
         redirect_to service_order_path(@service_order)
       else
-        flash = {notice: 'Não foi possível encerrar ordem de serviço.', service_order_errors: errors}
-        redirect_to edit_service_orders_deliver_path(@service_order), flash: flash
+        flash = { notice: 'Não foi possível encerrar ordem de serviço.', service_order_errors: errors }
+        redirect_to edit_service_orders_deliver_path(@service_order), flash:
       end
     end
 

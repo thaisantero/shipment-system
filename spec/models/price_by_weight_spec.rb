@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe PriceByWeight, type: :model do
@@ -109,7 +111,7 @@ RSpec.describe PriceByWeight, type: :model do
             name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
             maximum_weight: 10_000, fixed_rate: 10, status: 'active'
           )
-          _prices_by_weight_first = PriceByWeight.create!(
+          _prices_by_weight_first = PriceByWeight.create(
             start_range: 10, end_range: 70,
             price_for_kg: 5, transport_model:
           )
@@ -147,15 +149,15 @@ RSpec.describe PriceByWeight, type: :model do
             name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
             maximum_weight: 10_000, fixed_rate: 10, status: 'active'
           )
-          _prices_by_weight_first = PriceByWeight.create!(
+          _prices_by_weight_first = PriceByWeight.create(
             start_range: 10, end_range: 60,
             price_for_kg: 5, transport_model:
           )
-          _price_by_weight_second = PriceByWeight.create!(
+          _price_by_weight_second = PriceByWeight.create(
             start_range: 60, end_range: 70,
             price_for_kg: 5, transport_model:
           )
-          _price_by_weight_third = PriceByWeight.create!(
+          _price_by_weight_third = PriceByWeight.create(
             start_range: 70, end_range: 80,
             price_for_kg: 5, transport_model:
           )
@@ -173,15 +175,15 @@ RSpec.describe PriceByWeight, type: :model do
             name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
             maximum_weight: 10_000, fixed_rate: 10, status: 'active'
           )
-          _prices_by_weight_first = PriceByWeight.create!(
+          _prices_by_weight_first = PriceByWeight.create(
             start_range: 10, end_range: 60,
             price_for_kg: 5, transport_model:
           )
-          _price_by_weight_second = PriceByWeight.create!(
+          _price_by_weight_second = PriceByWeight.create(
             start_range: 60, end_range: 70,
             price_for_kg: 5, transport_model:
           )
-          _price_by_weight_third = PriceByWeight.create!(
+          _price_by_weight_third = PriceByWeight.create(
             start_range: 70, end_range: 80,
             price_for_kg: 5, transport_model:
           )
@@ -202,7 +204,7 @@ RSpec.describe PriceByWeight, type: :model do
               name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
               maximum_weight: 10_000, fixed_rate: 10, status: 'active'
             )
-            _prices_by_weight_first = PriceByWeight.create!(
+            _prices_by_weight_first = PriceByWeight.create(
               start_range: 10, end_range: 1000,
               price_for_kg: 5, transport_model:
             )
@@ -219,7 +221,7 @@ RSpec.describe PriceByWeight, type: :model do
               name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
               maximum_weight: 10_000, fixed_rate: 10, status: 'active'
             )
-            _prices_by_weight_first = PriceByWeight.create!(
+            _prices_by_weight_first = PriceByWeight.create(
               start_range: 10, end_range: 1000,
               price_for_kg: 5, transport_model:
             )
@@ -304,15 +306,15 @@ RSpec.describe PriceByWeight, type: :model do
               name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
               maximum_weight: 10_000, fixed_rate: 10, status: 'active'
             )
-            _prices_by_weight_first = PriceByWeight.create!(
+            _prices_by_weight_first = PriceByWeight.create(
               start_range: 10, end_range: 60,
               price_for_kg: 5, transport_model:
             )
-            _price_by_weight_second = PriceByWeight.create!(
+            _price_by_weight_second = PriceByWeight.create(
               start_range: 60, end_range: 70,
               price_for_kg: 5, transport_model:
             )
-            _price_by_weight_third = PriceByWeight.create!(
+            _price_by_weight_third = PriceByWeight.create(
               start_range: 70, end_range: 80,
               price_for_kg: 5, transport_model:
             )

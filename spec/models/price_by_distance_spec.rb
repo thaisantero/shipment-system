@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe PriceByDistance, type: :model do
@@ -109,7 +111,7 @@ RSpec.describe PriceByDistance, type: :model do
             name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
             maximum_weight: 10_000, fixed_rate: 10, status: 'active'
           )
-          _price_by_distance_first = PriceByDistance.create!(
+          _price_by_distance_first = PriceByDistance.create(
             start_range: 50, end_range: 70,
             distance_tax: 5, transport_model:
           )
@@ -147,15 +149,15 @@ RSpec.describe PriceByDistance, type: :model do
             name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
             maximum_weight: 10_000, fixed_rate: 10, status: 'active'
           )
-          _price_by_distance_first = PriceByDistance.create!(
+          _price_by_distance_first = PriceByDistance.create(
             start_range: 50, end_range: 60,
             distance_tax: 5, transport_model:
           )
-          _price_by_distance_second = PriceByDistance.create!(
+          _price_by_distance_second = PriceByDistance.create(
             start_range: 60, end_range: 70,
             distance_tax: 5, transport_model:
           )
-          _price_by_distance_third = PriceByDistance.create!(
+          _price_by_distance_third = PriceByDistance.create(
             start_range: 70, end_range: 80,
             distance_tax: 5, transport_model:
           )
@@ -173,15 +175,15 @@ RSpec.describe PriceByDistance, type: :model do
             name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
             maximum_weight: 10_000, fixed_rate: 10, status: 'active'
           )
-          _price_by_distance_first = PriceByDistance.create!(
+          _price_by_distance_first = PriceByDistance.create(
             start_range: 50, end_range: 60,
             distance_tax: 5, transport_model:
           )
-          _price_by_distance_second = PriceByDistance.create!(
+          _price_by_distance_second = PriceByDistance.create(
             start_range: 60, end_range: 70,
             distance_tax: 5, transport_model:
           )
-          _price_by_distance_third = PriceByDistance.create!(
+          _price_by_distance_third = PriceByDistance.create(
             start_range: 70, end_range: 80,
             distance_tax: 5, transport_model:
           )
@@ -202,7 +204,7 @@ RSpec.describe PriceByDistance, type: :model do
               name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
               maximum_weight: 10_000, fixed_rate: 10, status: 'active'
             )
-            _price_by_distance_first = PriceByDistance.create!(
+            _price_by_distance_first = PriceByDistance.create(
               start_range: 50, end_range: 100,
               distance_tax: 5, transport_model:
             )
@@ -219,7 +221,7 @@ RSpec.describe PriceByDistance, type: :model do
               name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
               maximum_weight: 10_000, fixed_rate: 10, status: 'active'
             )
-            _price_by_distance_first = PriceByDistance.create!(
+            _price_by_distance_first = PriceByDistance.create(
               start_range: 50, end_range: 100,
               distance_tax: 5, transport_model:
             )
@@ -304,15 +306,15 @@ RSpec.describe PriceByDistance, type: :model do
               name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
               maximum_weight: 10_000, fixed_rate: 10, status: 'active'
             )
-            _price_by_distance_first = PriceByDistance.create!(
+            _price_by_distance_first = PriceByDistance.create(
               start_range: 50, end_range: 60,
               distance_tax: 5, transport_model:
             )
-            _price_by_distance_second = PriceByDistance.create!(
+            _price_by_distance_second = PriceByDistance.create(
               start_range: 60, end_range: 70,
               distance_tax: 5, transport_model:
             )
-            _price_by_distance_third = PriceByDistance.create!(
+            _price_by_distance_third = PriceByDistance.create(
               start_range: 70, end_range: 80,
               distance_tax: 5, transport_model:
             )
@@ -331,7 +333,7 @@ RSpec.describe PriceByDistance, type: :model do
             transport_model = TransportModel.create(
               name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
               maximum_weight: 10_000, fixed_rate: 10, status: 'active'
-            ) 
+            )
             price_by_distance = PriceByDistance.new(
               start_range: 50, end_range: 100,
               distance_tax: -5, transport_model:

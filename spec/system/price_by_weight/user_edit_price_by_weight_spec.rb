@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Usuário edita um preço por peso' do
   it 'se for administrador' do
-    user = User.create!(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password', role: :regular_user)
+    user = User.create(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password', role: :regular_user)
     tm = TransportModel.create(name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
-                          maximum_weight: 10_000, fixed_rate: 10)
-    PriceByWeight.create!(start_range: 10, end_range: 100, price_for_kg: 10, transport_model: tm)
+                               maximum_weight: 10_000, fixed_rate: 10)
+    PriceByWeight.create(start_range: 10, end_range: 100, price_for_kg: 10, transport_model: tm)
     # Act
     login_as(user)
     visit root_path
@@ -16,10 +18,10 @@ describe 'Usuário edita um preço por peso' do
   end
 
   it 'visualizando dados cadastrados' do
-    user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
+    user = User.create(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
     tm = TransportModel.create(name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
-                          maximum_weight: 10_000, fixed_rate: 10)
-    PriceByWeight.create!(start_range: 10, end_range: 100, price_for_kg: 10, transport_model: tm)
+                               maximum_weight: 10_000, fixed_rate: 10)
+    PriceByWeight.create(start_range: 10, end_range: 100, price_for_kg: 10, transport_model: tm)
 
     login_as(user)
     visit root_path
@@ -34,12 +36,12 @@ describe 'Usuário edita um preço por peso' do
   end
 
   it 'com sucesso' do
-    user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
-    tm = TransportModel.create!(
+    user = User.create(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
+    tm = TransportModel.create(
       name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
       maximum_weight: 10_000, fixed_rate: 10
     )
-    PriceByWeight.create!(start_range: 10, end_range: 100, price_for_kg: 10, transport_model: tm)
+    PriceByWeight.create(start_range: 10, end_range: 100, price_for_kg: 10, transport_model: tm)
 
     login_as(user)
     visit root_path
@@ -58,10 +60,10 @@ describe 'Usuário edita um preço por peso' do
   end
 
   it 'e mantém os campos obrigatórios' do
-    user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
+    user = User.create(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
     tm = TransportModel.create(name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
-                          maximum_weight: 10_000, fixed_rate: 10)
-    PriceByWeight.create!(start_range: 10, end_range: 100, price_for_kg: 10, transport_model: tm)
+                               maximum_weight: 10_000, fixed_rate: 10)
+    PriceByWeight.create(start_range: 10, end_range: 100, price_for_kg: 10, transport_model: tm)
 
     login_as(user)
     visit root_path

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe TransportModel, type: :model do
   describe 'válido?' do
     context 'presença' do
       it 'falso quando name está vazio' do
-        transport_model = TransportModel.create(
+        transport_model = TransportModel.new(
           name: '', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
           maximum_weight: 10_000, fixed_rate: 10, status: 'active'
         )
@@ -13,7 +15,7 @@ RSpec.describe TransportModel, type: :model do
       end
 
       it 'falso quando distância mínima está vazia' do
-        transport_model = TransportModel.create(
+        transport_model = TransportModel.new(
           name: 'Express', minimum_distance: '', maximum_distance: 200, minimum_weight: 10,
           maximum_weight: 10_000, fixed_rate: 10, status: 'active'
         )
@@ -22,7 +24,7 @@ RSpec.describe TransportModel, type: :model do
       end
 
       it 'falso quando distância máxima está vazia' do
-        transport_model = TransportModel.create(
+        transport_model = TransportModel.new(
           name: 'Express', minimum_distance: 50, maximum_distance: '', minimum_weight: 10,
           maximum_weight: 10_000, fixed_rate: 10, status: 'active'
         )
@@ -31,7 +33,7 @@ RSpec.describe TransportModel, type: :model do
       end
 
       it 'falso quando peso mínimo está vazio' do
-        transport_model = TransportModel.create(
+        transport_model = TransportModel.new(
           name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: nil,
           maximum_weight: 10_000, fixed_rate: 10, status: 'active'
         )
@@ -40,7 +42,7 @@ RSpec.describe TransportModel, type: :model do
       end
 
       it 'falso quando peso máximo está vazio' do
-        transport_model = TransportModel.create(
+        transport_model = TransportModel.new(
           name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
           maximum_weight: nil, fixed_rate: 10, status: 'active'
         )
@@ -49,7 +51,7 @@ RSpec.describe TransportModel, type: :model do
       end
 
       it 'falso quando taxa fixa está vazia' do
-        transport_model = TransportModel.create(
+        transport_model = TransportModel.new(
           name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
           maximum_weight: 10_000, fixed_rate: '', status: 'active'
         )
@@ -60,7 +62,7 @@ RSpec.describe TransportModel, type: :model do
 
     context 'valores negativos' do
       it 'distância mínima menor que zero' do
-        transport_model = TransportModel.create(
+        transport_model = TransportModel.new(
           name: 'Express', minimum_distance: -50, maximum_distance: 200, minimum_weight: 10,
           maximum_weight: 10_000, fixed_rate: 10, status: 'active'
         )
@@ -69,7 +71,7 @@ RSpec.describe TransportModel, type: :model do
       end
 
       it 'distância máxima menor que zero' do
-        transport_model = TransportModel.create(
+        transport_model = TransportModel.new(
           name: 'Express', minimum_distance: 50, maximum_distance: -200, minimum_weight: 10,
           maximum_weight: 10_000, fixed_rate: 10, status: 'active'
         )
@@ -78,7 +80,7 @@ RSpec.describe TransportModel, type: :model do
       end
 
       it 'peso mínimo menor que zero' do
-        transport_model = TransportModel.create(
+        transport_model = TransportModel.new(
           name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: -10,
           maximum_weight: 10_000, fixed_rate: 10, status: 'active'
         )
@@ -87,7 +89,7 @@ RSpec.describe TransportModel, type: :model do
       end
 
       it 'peso máximo menor que zero' do
-        transport_model = TransportModel.create(
+        transport_model = TransportModel.new(
           name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
           maximum_weight: -10_000, fixed_rate: 10, status: 'active'
         )
@@ -96,7 +98,7 @@ RSpec.describe TransportModel, type: :model do
       end
 
       it 'taxa fixa menor que zero' do
-        transport_model = TransportModel.create(
+        transport_model = TransportModel.new(
           name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
           maximum_weight: 10_000, fixed_rate: -10, status: 'active'
         )
@@ -148,18 +150,18 @@ RSpec.describe TransportModel, type: :model do
 
   describe '#tax_weight' do
     it 'retorna taxa por peso (preço por peso x distância)' do
-      transport_model = TransportModel.create!(
+      transport_model = TransportModel.create(
         name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
         maximum_weight: 10_000, fixed_rate: 10, status: 'active'
       )
 
-      prices_by_weight_first = PriceByWeight.create!(
+      prices_by_weight_first = PriceByWeight.create(
         start_range: 10, end_range: 50,
-        price_for_kg: 5, transport_model: transport_model
+        price_for_kg: 5, transport_model:
       )
-      prices_by_weight_second = PriceByWeight.create!(
+      prices_by_weight_second = PriceByWeight.create(
         start_range: 50, end_range: 100,
-        price_for_kg: 10, transport_model: transport_model
+        price_for_kg: 10, transport_model:
       )
       weight = 65
       distance = 100
@@ -191,15 +193,15 @@ RSpec.describe TransportModel, type: :model do
 
   describe '#delivery_time' do
     it 'retorna prazo de entrega' do
-      transport_model = TransportModel.create!(
+      transport_model = TransportModel.create(
         name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
         maximum_weight: 10_000, fixed_rate: 10, status: 'active'
       )
-      delivery_time_index_first = DeliveryTimeTable.create!(
+      delivery_time_index_first = DeliveryTimeTable.create(
         start_range: 50, end_range: 60,
         delivery_time: 5, transport_model:
       )
-      delivery_time_index_second = DeliveryTimeTable.create!(
+      delivery_time_index_second = DeliveryTimeTable.create(
         start_range: 60, end_range: 70,
         delivery_time: 5, transport_model:
       )
@@ -209,15 +211,15 @@ RSpec.describe TransportModel, type: :model do
     end
 
     it 'retorna zero quando distância não está contida em nenhum intervalo' do
-      transport_model = TransportModel.create!(
+      transport_model = TransportModel.create(
         name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
         maximum_weight: 10_000, fixed_rate: 10, status: 'active'
       )
-      delivery_time_index_first = DeliveryTimeTable.create!(
+      delivery_time_index_first = DeliveryTimeTable.create(
         start_range: 50, end_range: 60,
         delivery_time: 5, transport_model:
       )
-      delivery_time_index_second = DeliveryTimeTable.create!(
+      delivery_time_index_second = DeliveryTimeTable.create(
         start_range: 60, end_range: 70,
         delivery_time: 5, transport_model:
       )
@@ -229,7 +231,7 @@ RSpec.describe TransportModel, type: :model do
 
   describe '#shipping_price' do
     it 'retorna preço total de entrega' do
-      transport_model = TransportModel.create!(
+      transport_model = TransportModel.create(
         name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
         maximum_weight: 10_000, fixed_rate: 10, status: 'active'
       )

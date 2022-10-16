@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe DeliveryTimeTable, type: :model do
@@ -109,7 +111,7 @@ RSpec.describe DeliveryTimeTable, type: :model do
             name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
             maximum_weight: 10_000, fixed_rate: 10, status: 'active'
           )
-          _delivery_time_index_first = DeliveryTimeTable.create!(
+          _delivery_time_index_first = DeliveryTimeTable.create(
             start_range: 50, end_range: 70,
             delivery_time: 5, transport_model:
           )
@@ -147,15 +149,15 @@ RSpec.describe DeliveryTimeTable, type: :model do
             name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
             maximum_weight: 10_000, fixed_rate: 10, status: 'active'
           )
-          _delivery_time_index_first = DeliveryTimeTable.create!(
+          _delivery_time_index_first = DeliveryTimeTable.create(
             start_range: 50, end_range: 60,
             delivery_time: 5, transport_model:
           )
-          _delivery_time_index_second = DeliveryTimeTable.create!(
+          _delivery_time_index_second = DeliveryTimeTable.create(
             start_range: 60, end_range: 70,
             delivery_time: 5, transport_model:
           )
-          _delivery_time_index_third = DeliveryTimeTable.create!(
+          _delivery_time_index_third = DeliveryTimeTable.create(
             start_range: 70, end_range: 80,
             delivery_time: 5, transport_model:
           )
@@ -173,15 +175,15 @@ RSpec.describe DeliveryTimeTable, type: :model do
             name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
             maximum_weight: 10_000, fixed_rate: 10, status: 'active'
           )
-          _delivery_time_index_first = DeliveryTimeTable.create!(
+          _delivery_time_index_first = DeliveryTimeTable.create(
             start_range: 50, end_range: 60,
             delivery_time: 5, transport_model:
           )
-          _delivery_time_index_second = DeliveryTimeTable.create!(
+          _delivery_time_index_second = DeliveryTimeTable.create(
             start_range: 60, end_range: 70,
             delivery_time: 5, transport_model:
           )
-          _delivery_time_index_third = DeliveryTimeTable.create!(
+          _delivery_time_index_third = DeliveryTimeTable.create(
             start_range: 70, end_range: 80,
             delivery_time: 5, transport_model:
           )
@@ -202,7 +204,7 @@ RSpec.describe DeliveryTimeTable, type: :model do
               name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
               maximum_weight: 10_000, fixed_rate: 10, status: 'active'
             )
-            _delivery_time_index_first = DeliveryTimeTable.create!(
+            _delivery_time_index_first = DeliveryTimeTable.create(
               start_range: 50, end_range: 100,
               delivery_time: 5, transport_model:
             )
@@ -219,7 +221,7 @@ RSpec.describe DeliveryTimeTable, type: :model do
               name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
               maximum_weight: 10_000, fixed_rate: 10, status: 'active'
             )
-            _delivery_time_index_first = DeliveryTimeTable.create!(
+            _delivery_time_index_first = DeliveryTimeTable.create(
               start_range: 50, end_range: 100,
               delivery_time: 5, transport_model:
             )
@@ -304,15 +306,15 @@ RSpec.describe DeliveryTimeTable, type: :model do
               name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
               maximum_weight: 10_000, fixed_rate: 10, status: 'active'
             )
-            _delivery_time_index_first = DeliveryTimeTable.create!(
+            _delivery_time_index_first = DeliveryTimeTable.create(
               start_range: 50, end_range: 60,
               delivery_time: 5, transport_model:
             )
-            _delivery_time_index__second = DeliveryTimeTable.create!(
+            _delivery_time_index__second = DeliveryTimeTable.create(
               start_range: 60, end_range: 70,
               delivery_time: 5, transport_model:
             )
-            _delivery_time_index__third = DeliveryTimeTable.create!(
+            _delivery_time_index__third = DeliveryTimeTable.create(
               start_range: 70, end_range: 80,
               delivery_time: 5, transport_model:
             )
@@ -331,7 +333,7 @@ RSpec.describe DeliveryTimeTable, type: :model do
             transport_model = TransportModel.create(
               name: 'Sedex', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
               maximum_weight: 10_000, fixed_rate: 10, status: 'active'
-            ) 
+            )
             delivery_time_index = DeliveryTimeTable.new(
               start_range: 50, end_range: 100,
               delivery_time: -5, transport_model:

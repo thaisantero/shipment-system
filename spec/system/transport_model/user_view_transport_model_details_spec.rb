@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Usuário vê detalhes do modelo de transporte' do
@@ -14,8 +16,8 @@ describe 'Usuário vê detalhes do modelo de transporte' do
 
   it 'sendo usuário regular' do
     # Arrange
-    user = User.create!(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password', role: :regular_user)
-    TransportModel.create!(
+    user = User.create(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password', role: :regular_user)
+    TransportModel.create(
       name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
       maximum_weight: 10_000, fixed_rate: 10, status: 'active'
     )
@@ -35,8 +37,8 @@ describe 'Usuário vê detalhes do modelo de transporte' do
 
   it 'sendo administrador' do
     # Arrange
-    user = User.create!(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password', role: :admin)
-    TransportModel.create!(
+    user = User.create(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password', role: :admin)
+    TransportModel.create(
       name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
       maximum_weight: 10_000, fixed_rate: 10, status: 'active'
     )

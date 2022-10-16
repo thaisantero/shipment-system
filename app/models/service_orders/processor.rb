@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ServiceOrders
   class Processor
     attr_reader :service_order, :transport_model

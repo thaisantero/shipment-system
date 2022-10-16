@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ServiceOrders
   class ProcessController < ApplicationController
     before_action :authenticate_user!

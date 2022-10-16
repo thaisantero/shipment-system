@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Usuário cadastra modelo de transporte' do
@@ -9,7 +11,7 @@ describe 'Usuário cadastra modelo de transporte' do
 
   it 'se for administrador' do
     # Arrange
-    user = User.create!(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password', role: :regular_user)
+    user = User.create(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password', role: :regular_user)
     # Act
     login_as(user)
     visit root_path
@@ -21,7 +23,7 @@ describe 'Usuário cadastra modelo de transporte' do
 
   it 'com sucesso' do
     # Arrange
-    user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
+    user = User.create(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
     # Act
     login_as(user)
     visit root_path
@@ -45,7 +47,7 @@ describe 'Usuário cadastra modelo de transporte' do
 
   it 'com dados incompletos' do
     # Arrange
-    user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
+    user = User.create(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
     # Act
     login_as(user)
     visit root_path

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Usuário se autentica' do
   it 'com sucesso' do
-    User.create!(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password')
+    User.create(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password')
 
     visit root_path
     click_on 'Entrar'
@@ -22,7 +24,7 @@ describe 'Usuário se autentica' do
   end
 
   it 'e faz logout' do
-    User.create!(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password')
+    User.create(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password')
 
     visit root_path
     click_on 'Entrar'

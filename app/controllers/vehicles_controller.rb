@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VehiclesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_vehicle, only: %i[edit update]

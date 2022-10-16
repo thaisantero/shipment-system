@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Usuário muda status do veículo' do
@@ -9,15 +11,15 @@ describe 'Usuário muda status do veículo' do
 
   it 'se for administrador' do
     # Arrange
-    user = User.create!(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password', role: :regular_user)
+    user = User.create(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password', role: :regular_user)
     transport_model = TransportModel.create(
       name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
       maximum_weight: 10_000, fixed_rate: 10, status: 'active'
     )
-    Vehicle.create!(
-      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen', 
+    Vehicle.create(
+      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen',
       vehicle_type: 'Van 1.6 Mi', fabrication_year: 2016,
-      max_load_capacity: 10_000, transport_model: transport_model, status: :waiting
+      max_load_capacity: 10_000, transport_model:, status: :waiting
     )
     # Act
     login_as(user)
@@ -32,15 +34,15 @@ describe 'Usuário muda status do veículo' do
 
   it 'para ativo' do
     # Arrange
-    user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
+    user = User.create(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
     transport_model = TransportModel.create(
       name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
       maximum_weight: 10_000, fixed_rate: 10, status: 'active'
     )
-    Vehicle.create!(
-      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen', 
+    Vehicle.create(
+      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen',
       vehicle_type: 'Van 1.6 Mi', fabrication_year: 2016,
-      max_load_capacity: 10_000, transport_model: transport_model, status: :waiting
+      max_load_capacity: 10_000, transport_model:, status: :waiting
     )
     # Act
     login_as(user)
@@ -58,15 +60,15 @@ describe 'Usuário muda status do veículo' do
 
   it 'para em manutenção' do
     # Arrange
-    user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
+    user = User.create(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
     transport_model = TransportModel.create(
       name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
       maximum_weight: 10_000, fixed_rate: 10, status: 'active'
     )
-    Vehicle.create!(
-      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen', 
+    Vehicle.create(
+      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen',
       vehicle_type: 'Van 1.6 Mi', fabrication_year: 2016,
-      max_load_capacity: 10_000, transport_model: transport_model, status: :waiting
+      max_load_capacity: 10_000, transport_model:, status: :waiting
     )
     # Act
     login_as(user)
@@ -84,15 +86,15 @@ describe 'Usuário muda status do veículo' do
 
   it 'para em espera' do
     # Arrange
-    user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
+    user = User.create(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
     transport_model = TransportModel.create(
       name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
       maximum_weight: 10_000, fixed_rate: 10, status: 'active'
     )
-    Vehicle.create!(
+    Vehicle.create(
       identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen',
       vehicle_type: 'Van 1.6 Mi', fabrication_year: 2016,
-      max_load_capacity: 10_000, transport_model: transport_model, status: :active
+      max_load_capacity: 10_000, transport_model:, status: :active
     )
     # Act
     login_as(user)

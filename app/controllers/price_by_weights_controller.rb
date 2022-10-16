@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PriceByWeightsController < ApplicationController
   before_action :authenticate_user!
 
@@ -12,7 +14,8 @@ class PriceByWeightsController < ApplicationController
       redirect_to transport_model_path(@price_by_weight.transport_model_id)
     else
       flash[:notice] = 'Preço por Peso não cadastrado.'
-      redirect_to transport_model_path(price_by_weight_params[:transport_model_id]), flash: {price_by_weight_errors: @price_by_weight.errors.full_messages}
+      redirect_to transport_model_path(price_by_weight_params[:transport_model_id]),
+                  flash: { price_by_weight_errors: @price_by_weight.errors.full_messages }
     end
   end
 

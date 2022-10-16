@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PriceByDistancesController < ApplicationController
   before_action :authenticate_user!
 
@@ -12,7 +14,8 @@ class PriceByDistancesController < ApplicationController
       redirect_to transport_model_path(@price_by_distance.transport_model_id)
     else
       flash[:notice] = 'Taxa por Distância não cadastrada.'
-      redirect_to transport_model_path(price_by_distance_params[:transport_model_id]), flash: {price_by_distance_errors: @price_by_distance.errors.full_messages}
+      redirect_to transport_model_path(price_by_distance_params[:transport_model_id]),
+                  flash: { price_by_distance_errors: @price_by_distance.errors.full_messages }
     end
   end
 
@@ -31,7 +34,6 @@ class PriceByDistancesController < ApplicationController
       render 'edit'
     end
   end
-
 
   def destroy
     @price_by_distance = PriceByDistance.find(params[:id])

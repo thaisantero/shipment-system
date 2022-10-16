@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Usuário vê modelos de transporte cadastrados' do
@@ -10,7 +12,7 @@ describe 'Usuário vê modelos de transporte cadastrados' do
 
   it 'a partir do menu' do
     # Arrange
-    user = User.create!(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password')
+    user = User.create(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password')
     TransportModel.create(name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
                           maximum_weight: 10_000, fixed_rate: 10, status: 'active')
     TransportModel.create(name: 'Bike', minimum_distance: 1, maximum_distance: 10, minimum_weight: 1,

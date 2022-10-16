@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Usuário desativa modelo de transporte' do
   it 'se for administrador(a)' do
-    user = User.create!(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password', role: :regular_user)
+    user = User.create(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password', role: :regular_user)
     TransportModel.create(name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
                           maximum_weight: 10_000, fixed_rate: 10)
 
@@ -17,7 +19,7 @@ describe 'Usuário desativa modelo de transporte' do
   end
 
   it 'com sucesso' do
-    user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
+    user = User.create(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
     TransportModel.create(name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
                           maximum_weight: 10_000, fixed_rate: 10, status: 'active')
     # Act
@@ -34,7 +36,7 @@ describe 'Usuário desativa modelo de transporte' do
   end
 
   it 'e o ativa' do
-    user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
+    user = User.create(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
     TransportModel.create(name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
                           maximum_weight: 10_000, fixed_rate: 10, status: 'active')
     # Act

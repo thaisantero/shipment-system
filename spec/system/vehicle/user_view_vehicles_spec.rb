@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Usuário vê veículos cadastrados' do
@@ -10,15 +12,15 @@ describe 'Usuário vê veículos cadastrados' do
 
   it 'a partir do menu' do
     # Arrange
-    user = User.create!(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password')
+    user = User.create(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password')
     transport_model = TransportModel.create(
       name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
       maximum_weight: 10_000, fixed_rate: 10, status: 'active'
     )
     Vehicle.create(
-      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen', 
+      identification_plate: 'PNG0000', vehicle_brand: 'Volkswagen',
       vehicle_type: 'Van 1.6 Mi', fabrication_year: 2016,
-      max_load_capacity: 10_000, transport_model: transport_model
+      max_load_capacity: 10_000, transport_model:
     )
 
     # Act

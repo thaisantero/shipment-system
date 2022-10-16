@@ -1,11 +1,10 @@
+# frozen_string_literal: true
+
 class EmailValidator < ActiveModel::Validator
   def validate(record)
-    unless record.email.include? '@sistemadefrete.com.br'
-      record.errors.add :email, "inválido."
-    end
+    record.errors.add :email, 'inválido.' unless record.email.include? '@sistemadefrete.com.br'
   end
 end
-
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:

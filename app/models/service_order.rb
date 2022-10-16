@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ServiceOrder < ApplicationRecord
   belongs_to :transport_model, optional: true
   belongs_to :vehicle, optional: true

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePriceByDistances < ActiveRecord::Migration[7.0]
   def change
     create_table :price_by_distances do |t|

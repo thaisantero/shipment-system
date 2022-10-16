@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateDeliveryTimeTables < ActiveRecord::Migration[7.0]
   def change
     create_table :delivery_time_tables do |t|

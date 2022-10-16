@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Usuário edita um modelo de transporte' do
   it 'se for administrador' do
-    user = User.create!(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password', role: :regular_user)
+    user = User.create(name: 'User', email: 'user@sistemadefrete.com.br', password: 'password', role: :regular_user)
     TransportModel.create(name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
                           maximum_weight: 10_000, fixed_rate: 10)
 
@@ -16,7 +18,7 @@ describe 'Usuário edita um modelo de transporte' do
   end
 
   it 'visualizando dados cadastrados' do
-    user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
+    user = User.create(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
     TransportModel.create(name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
                           maximum_weight: 10_000, fixed_rate: 10)
 
@@ -30,13 +32,13 @@ describe 'Usuário edita um modelo de transporte' do
     expect(page).to have_field('Distância Mínima', with: 50)
     expect(page).to have_field('Distância Máxima', with: 200)
     expect(page).to have_field('Peso Mínimo', with: 10)
-    expect(page).to have_field('Peso Máximo', with: 10000)
+    expect(page).to have_field('Peso Máximo', with: 10_000)
     expect(page).to have_field('Taxa Fixa', with: 10)
   end
 
   it 'com sucesso' do
-    user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
-    TransportModel.create!(
+    user = User.create(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
+    TransportModel.create(
       name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
       maximum_weight: 10_000, fixed_rate: 10
     )
@@ -56,7 +58,7 @@ describe 'Usuário edita um modelo de transporte' do
   end
 
   it 'e mantém os campos obrigatórios' do
-    user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
+    user = User.create(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
     TransportModel.create(name: 'Express', minimum_distance: 50, maximum_distance: 200, minimum_weight: 10,
                           maximum_weight: 10_000, fixed_rate: 10)
 

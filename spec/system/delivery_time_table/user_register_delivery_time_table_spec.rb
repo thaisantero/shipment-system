@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Usuário cadastra novo Prazo Estimado de Entrega por intervalo de distância' do
   it 'sendo administrador' do
-    user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :regular_user)
-    tm = TransportModel.create!(
+    user = User.create(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :regular_user)
+    tm = TransportModel.create(
       name: 'Bike', minimum_distance: 1, maximum_distance: 10, minimum_weight: 1,
       maximum_weight: 10, fixed_rate: 5, status: 'disabled'
     )
@@ -19,8 +21,8 @@ describe 'Usuário cadastra novo Prazo Estimado de Entrega por intervalo de dist
   end
 
   it 'com sucesso' do
-    user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
-    TransportModel.create!(
+    user = User.create(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
+    TransportModel.create(
       name: 'Bike', minimum_distance: 1, maximum_distance: 10, minimum_weight: 1,
       maximum_weight: 10, fixed_rate: 5, status: 'disabled'
     )
@@ -46,10 +48,9 @@ describe 'Usuário cadastra novo Prazo Estimado de Entrega por intervalo de dist
     expect(page).to have_content '4 h'
   end
 
-
   it 'de forma indequada e visualiza mensagens de aviso' do
-    user = User.create!(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
-    TransportModel.create!(
+    user = User.create(name: 'Joao', email: 'joao@sistemadefrete.com.br', password: 'password', role: :admin)
+    TransportModel.create(
       name: 'Bike', minimum_distance: 1, maximum_distance: 10, minimum_weight: 1,
       maximum_weight: 10, fixed_rate: 5, status: 'disabled'
     )

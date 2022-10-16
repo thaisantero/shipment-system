@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'válido?' do
     it 'nome é obrigatório' do
-      user = User.create(name: '', email: 'user@sistemadefrete.com.br', password: 'password')
+      user = User.new(name: '', email: 'user@sistemadefrete.com.br', password: 'password')
 
       result = user.valid?
 
@@ -11,7 +13,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'e-mal tem que ter @ssitemadefrete.com.br' do
-      user = User.create(name: 'User', email: 'user@email.com.br', password: 'password')
+      user = User.new(name: 'User', email: 'user@email.com.br', password: 'password')
 
       result = user.valid?
 
