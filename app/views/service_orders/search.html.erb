@@ -14,6 +14,9 @@
           <th><%= Vehicle.human_attribute_name(:vehicle_type) %> do Veículo</th>
           <% if @service_order.delivered? %>
             <th><%= ServiceOrder.human_attribute_name(:delivery_date) %></th>
+            <% if @service_order.with_delay? %>
+              <th><%= ServiceOrder.human_attribute_name(:delivery_description) %></th>
+            <% end %>
           <% else %>
             <th><%= ServiceOrder.human_attribute_name(:estimated_delivery_date) %></th>
           <% end %>
@@ -30,6 +33,9 @@
           <td><%= @service_order.vehicle.vehicle_type %></td>
           <% if @service_order.delivered? %>
             <td><%= @service_order.delivery_date.strftime('%d/%m/%Y %H h') %></th>
+            <% if @service_order.with_delay? %>
+              <td><%= @service_order.delivery_description %></td>
+            <% end %>
           <% else %>
             <td><%= @service_order.estimated_delivery_date.strftime('%d/%m/%Y %H h') %> </td>
           <% end %>
