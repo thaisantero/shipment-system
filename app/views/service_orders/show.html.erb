@@ -19,7 +19,7 @@
     <dt> <%= Customer.human_attribute_name(:customer_cpf) %>:</dt>
     <dd> <%= formatted_cpf(@service_order.customer.customer_registration_number) %></dd>
     <dt> <%= ServiceOrder.human_attribute_name(:delivery_distance) %>:</dt>
-    <dd> <%= number_with_precision(@service_order.delivery_distance, precision: 1, separator: ',') %> km</dd>
+    <dd> <%= number_with_precision(@service_order.delivery_distance, precision: 2, separator: ',') %> km</dd>
     <dt> <%= ServiceOrder.human_attribute_name(:service_order_status) %>:</dt>
     <dd> <%= I18n.t(@service_order.service_order_status) %></dd>
     <dt> <%= ServiceOrder.human_attribute_name(:transport_model) %>:</dt>
@@ -35,6 +35,6 @@
     <dt> <%= ServiceOrder.human_attribute_name(:delivery_description) %>:</dt>
     <dd> <%= @service_order.delivery_description %></dd>
     <dt> <%= ServiceOrder.human_attribute_name(:delivery_price) %>:</dt>
-    <dd> <%= number_to_currency(@service_order.delivery_price, unit: "R$", precision: 1, separator: ',') %></dd>
+    <dd> <%= number_to_currency(@service_order.delivery_price, unit: "R$", precision: 2, separator: ',') %></dd>
   </dl>
 </div>

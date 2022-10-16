@@ -65,7 +65,7 @@ describe 'Usuário vê tela de encerramento da ordem de serviço' do
     expect(page).to have_content 'CEP da Entrega: 60500-344'
     expect(page).to have_content 'Nome do Cliente: Ana Paula Silva Oliveira'
     expect(page).to have_content 'CPF do Cliente: 003.556.112-24'
-    expect(page).to have_content 'Distância de Entrega: 55,0 km'
+    expect(page).to have_content 'Distância de Entrega: 55,00 km'
     expect(page).to have_content 'Status: Encerrada'
     expect(page).to have_content 'Modalidade de Transporte: Express'
     expect(page).to have_content "Data Estimada para Entrega: #{estimated_delivery_date.strftime('%d/%m/%Y %H h')}"
@@ -73,6 +73,6 @@ describe 'Usuário vê tela de encerramento da ordem de serviço' do
     expect(page).to have_content "Data de Entrega: #{Time.zone.now.strftime('%d/%m/%Y %H h')}"
     expect(page).to have_content 'Status da Entrega: Com Atraso'
     expect(page).to have_content 'Descrição da Entrega: Problema com o veículo de entrega'
-    expect(page).to have_content 'Valor do Frete: R$40,0'
+    expect(page).to have_content 'Valor do Frete: R$40,00'
   end
 end

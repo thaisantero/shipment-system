@@ -74,11 +74,11 @@ describe 'Usuário vê modalidades de transporte disponíveis para alocação' d
     expect(page).to have_content 'CEP da Entrega: 60500-344'
     expect(page).to have_content 'Nome do Cliente: Ana Paula Silva Oliveira'
     expect(page).to have_content 'CPF do Cliente: 003.556.112-24'
-    expect(page).to have_content 'Distância de Entrega: 55,0 km'
+    expect(page).to have_content 'Distância de Entrega: 55,00 km'
     expect(page).to have_content 'Status: Em Entrega'
     expect(page).to have_content 'Modalidade de Transporte: Express'
     expect(page).to have_content "Data Estimada para Entrega: #{delivery_estimated_date.strftime('%d/%m/%Y %H h')}"
     expect(page).to have_content 'Veículo Alocado: PNG0000'
-    expect(page).to have_content 'Valor do Frete: R$26,0'
+    expect(page).to have_content 'Valor do Frete: R$26,00'
   end
 end

@@ -8,15 +8,6 @@ class VehiclesController < ApplicationController
     @vehicles = Vehicle.all.in_order_of(:status, [5, 0, 10])
   end
 
-  def search
-    @query = params[:query]
-    @vehicles = Vehicle.where(
-      'identification_plate LIKE ? OR vehicle_brand LIKE ? OR vehicle_type LIKE ?
-      OR fabrication_year LIKE ? OR max_load_capacity LIKE ? OR transport_model_id LIKE ?', "%#{@query}%",
-      "%#{@query}%", "%#{@query}%", "%#{@query}%", "%#{@query}%", "%#{@query}%"
-    )
-  end
-
   def new
     @vehicle = Vehicle.new
     @transport_models = TransportModel.all
@@ -45,6 +36,15 @@ class VehiclesController < ApplicationController
 
   def edit
     @transport_models = TransportModel.all
+  end
+
+  def search
+    @query = params[:query]
+    @vehicles = Vehicle.where(
+      'identification_plate LIKE ? OR vehicle_brand LIKE ? OR vehicle_type LIKE ?
+      OR fabrication_year LIKE ? OR max_load_capacity LIKE ? OR transport_model_id LIKE ?', "%#{@query}%",
+      "%#{@query}%", "%#{@query}%", "%#{@query}%", "%#{@query}%", "%#{@query}%"
+    )
   end
 
   private
