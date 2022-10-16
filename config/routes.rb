@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :price_by_weights, only: %i[new create edit update destroy]
   resources :delivery_time_table, only: %i[new create edit update destroy]
   resources :service_orders, only: %i[index new create show] do
+    get 'search', on: :collection
     scope module: :service_orders, as: 'service_orders' do
       collection do
         resources :process, only: %i[index create edit]

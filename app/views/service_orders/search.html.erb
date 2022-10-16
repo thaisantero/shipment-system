@@ -1,0 +1,40 @@
+<h2> Código de Rastreio: <%= @service_order&.code %> </h2>
+
+<% if @service_order.nil? %>
+  <p>Sem resultado para a busca.</p>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= ServiceOrder.human_attribute_name(:pickup_address) %></th>
+        <th><%= Customer.human_attribute_name(:customer_address) %></th>
+        <th><%= ServiceOrder.human_attribute_name(:service_order_status) %></th>
+        <% if !@service_order.pending? %>
+          <th><%= Vehicle.human_attribute_name(:identification_plate) %> do Veículo</th>
+          <th><%= Vehicle.human_attribute_name(:vehicle_type) %> do Veículo</th>
+          <% if @service_order.delivered? %>
+            <th><%= ServiceOrder.human_attribute_name(:delivery_date) %></th>
+          <% else %>
+            <th><%= ServiceOrder.human_attribute_name(:estimated_delivery_date) %></th>
+          <% end %>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @service_order.pickup_address %> </td>
+        <td><%= @service_order.customer.customer_address %> </td>
+        <td><%= I18n.t(@service_order.service_order_status) %> </td>
+        <% if !@service_order.pending? %>
+          <td><%= @service_order.vehicle.identification_plate %> </td>
+          <td><%= @service_order.vehicle.vehicle_type %></td>
+          <% if @service_order.delivered? %>
+            <td><%= @service_order.delivery_date.strftime('%d/%m/%Y %H h') %></th>
+          <% else %>
+            <td><%= @service_order.estimated_delivery_date.strftime('%d/%m/%Y %H h') %> </td>
+          <% end %>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

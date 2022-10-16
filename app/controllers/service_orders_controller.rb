@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ServiceOrdersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i[index new create show]
 
   def index
     @service_orders = ServiceOrder.all.sort_by(&:service_order_status)
@@ -25,6 +25,11 @@ class ServiceOrdersController < ApplicationController
 
   def show
     @service_order = ServiceOrder.find(params[:id])
+  end
+
+  def search
+    @query = params[:query]
+    @service_order = ServiceOrder.find_by(code: @query)
   end
 
   private
