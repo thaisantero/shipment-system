@@ -17,8 +17,8 @@ describe 'Usuário se cadastra' do
 
     expect(page).to have_content 'Você realizou seu registro com sucesso.'
     within('nav') do
-      expect(page).to have_content 'User | user@sistemadefrete.com.br | Usuário Regular'
-      expect(page).not_to have_content 'User | user@sistemadefrete.com.br | Administrador(a)'
+      expect(page).to have_content 'User | user@sistemadefrete.com.br Usuário Regular'
+      expect(page).not_to have_content 'User | user@sistemadefrete.com.br Administrador(a)'
       expect(page).to have_button 'Sair'
     end
   end
